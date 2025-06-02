@@ -1,0 +1,28 @@
+{
+  "name": "backendserver",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  
+    "fullname": "John Doe",
+    "email": "john@example.com",
+    "address": "123 Test Road",
+    "items": [
+      { "product_id": 1, "quantity": 2, "price": 49.99 },
+      { "product_id": 2, "quantity": 1, "price": 99.99 }
+    ]
+  
+  
+
+}

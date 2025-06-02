@@ -1,0 +1,66 @@
+const express = require('express');
+const router = express.Router();
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./db/ecommerce.db');
+
+router.post('/', (req, res) => {
+  const { product_id, quantity } = req.body;
+  if (!product_id) return res.status(400).json({ error: "Missing product_id" });
+
+  db.run(
+    `INSERT INTO cart_items (product_id, quantity) VALUES (?, ?)`,
+    [product_id, quantity || 1],
+    function (err) {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: err.message });
+      }
+      res.json({ success: true, insertedId: this.lastID });
+    }
+  );
+});
+
+router.get('/', (req, res) => {
+  const query = `
+    SELECT cart_items.id, products.name, products.price, products.image_url, cart_items.quantity
+    FROM cart_items
+    JOIN products ON cart_items.product_id = products.id
+  `;
+  db.all(query, [], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(rows);
+  });
+});
+
+//remove from cart
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    const sql = `DELETE FROM cart_items WHERE id = ?`;
+    db.run(sql, [id], function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ success: true });
+    });
+  });
+
+  //อัปเดตจำนวนสินค้า
+  router.put('/:id', (req, res) => {
+    const { quantity } = req.body;
+    const id = req.params.id;
+    db.run(`UPDATE cart_items SET quantity = ? WHERE id = ?`, [quantity, id], function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ success: true });
+    });
+  });
+
+  //backend endpoint 
+router.delete('/clear', (req, res) => {
+    db.run('DELETE FROM cart_items', [], function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ success: true });
+    });
+  });
+  
+  
+  
+
+module.exports = router;
