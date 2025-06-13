@@ -80,14 +80,158 @@
 
 
 	<div class="untree_co-section product-section before-footer-section">
-		<div class="container">
-			<div class="row" id="product-list">
+		<section class="product-category-section py-5">
+			<div class="container">
+				<!-- Section 1: Product Category -->
+				<div id="inspiration-image" class="d-flex overflow-auto gap-3 mb-4">
+					<button class="btn btn-dark rounded-pill px-4" onclick="filterCategory('ทั้งหมด')">ทั้งหมด</button>
+					<button class="btn btn-outline-dark rounded-pill px-4"
+						onclick="filterCategory('เก้าอี้')">เก้าอี้</button>
+					<button class="btn btn-outline-dark rounded-pill px-4"
+						onclick="filterCategory('โต๊ะ')">โต๊ะ</button>
+					<button class="btn btn-outline-dark rounded-pill px-4"
+						onclick="filterCategory('โซฟา')">โซฟา</button>
+					<button class="btn btn-outline-dark rounded-pill px-4"
+						onclick="filterCategory('เตียงนอน')">เตียงนอน</button>
+				</div>
 
-				
+				<!-- สินค้าตามหมวดหมู่ -->
+				<div class="row" id="product-list">
+					<!-- JS จะใส่สินค้าเข้ามาตรงนี้ -->
+				</div>
 
+				<section class="product-display">
+					<!-- Section 2: Promotions -->
+					<div class="promotions">
+						<h2 class="mb-4">โปรโมชั่น</h2>
+						<div class="row mb-5">
+							<div class="col-md-4">
+								<div class="card shadow-sm border-0 card-promo1">
+									<img src="images/promo1.avif" class="card-img-top" alt="โปรโมชั่น 1">
+									<div class="card-body text-white">
+										<h5 class="card-title">ลด 30% เก้าอี้</h5>
+										<p class="card-text">เฉพาะสินค้าที่ร่วมรายการ วันนี้ถึงสิ้นเดือนนี้</p>
+										<a href="shop.html?category=เก้าอี้" class="btn btn-dark">ดูสินค้า</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card shadow-sm border-0 card-promo2">
+									<img src="images/promo2.avif" class="card-img-top" alt="โปรโมชั่น 2">
+									<div class="card-body text-white">
+										<h5 class="card-title">สินค้าขายดี</h5>
+										<p class="card-text">ตกแต่งห้องทำงานด้วยเฟอร์นิเจอร์คุณภาพ</p>
+										<a href="shop.html?category=โต๊ะ" class="btn btn-dark">ดูสินค้า</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card shadow-sm border-0 card-promo3">
+									<img src="images/promo3.avif" class="card-img-top" alt="โปรโมชั่น 3">
+									<div class="card-body text-white">
+										<h5 class="card-title">โซฟาสุดนุ่ม ลดแรง!</h5>
+										<p class="card-text">โปรพิเศษโซฟาหลากหลายรูปแบบที่คุณต้องหลง</p>
+										<a href="shop.html?category=โซฟา" class="btn btn-dark">ดูสินค้า</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<style>
+							.card-body {
+								min-height: 200px;
+							}
+
+							.card-body .btn {
+								margin-top: 40px;
+							}
+
+							.card-promo1 {
+								background-color: rgb(var(--colour-commercial-message-ikea-family, 0, 124, 193));
+							}
+
+							.card-promo2 {
+								background-color: rgb(var(--colour-commercial-message-bti-red, 204, 0, 8));
+							}
+
+							.card-promo3 {
+								background-color: rgb(var(--colour-commercial-message-bti-yellow, 255, 219, 0));
+							}
+						</style>
+
+					</div>
+
+					<!-- Section 3: Ideas & Inspirations -->
+					<div class="inspiration">
+						<div class="tabs">
+							<h2 class="mb-4">ไอเดีย & แรงบันดาลใจเพิ่มเติม</h2>
+							<div class="mb-4 d-flex gap-3">
+								<button class="btn btn-outline-secondary inspiration-tab active"
+									data-room="all">ทั้งหมด</button>
+								<button class="btn btn-outline-secondary inspiration-tab"
+									data-room="bedroom">ห้องนอน</button>
+								<button class="btn btn-outline-secondary inspiration-tab"
+									data-room="living">ห้องนั่งเล่น</button>
+								<button class="btn btn-outline-secondary inspiration-tab"
+									data-room="work">ห้องทำงาน</button>
+								<button class="btn btn-outline-secondary inspiration-tab"
+									data-room="kitchen">ห้องครัว</button>
+							</div>
+
+							<div id="inspiration-display">
+								<!-- รูปภาพจะแสดงที่นี่ -->
+							</div>
+
+							<!--script ของ Section 3 โดยเฉพาะ-->
+							<script>
+								const tabButtons = document.querySelectorAll('.inspiration-tab');
+								const inspirationImage = document.getElementById('inspiration-display');
+
+								// เปลี่ยนให้แต่ละห้องมีหลายภาพ
+								const roomImages = {
+									all: ['images/inspi-all1.avif', 'images/inspi-all2.avif', 'images/inspi-all3.avif', 'images/inspi-all4.avif', 'images/inspi-all5.avif', 'images/inspi-all6.avif'],
+									bedroom: ['images/inspi-bed1.avif', 'images/inspi-bed2.avif', 'images/inspi-bed3.avif', 'images/inspi-bed4.avif', 'images/inspi-bed5.webp', 'images/inspi-bed6.avif'],
+									living: ['images/inspi-liv1.avif', 'images/inspi-liv2.webp', 'images/inspi-liv3.avif', 'images/inspi-liv4.avif', 'images/inspi-liv5.avif', 'images/inspi-liv6.avif'],
+									work: ['images/inspi-work1.avif', 'images/inspi-work2.avif', 'images/inspi-work3.avif', 'images/inspi-work4.avif', 'images/inspi-work5.avif', 'images/inspi-work6.avif'],
+									kitchen: ['images/inspi-kit1.avif', 'images/inspi-kit2.avif', 'images/inspi-kit3.avif', 'images/inspi-kit4.avif', 'images/inspi-kit5.avif', 'images/inspi-kit6.avif']
+								};
+
+								function showImages(room) {
+									const imagesHTML = roomImages[room].map(img =>
+										`<img src="${img}" class="img-fluid rounded shadow" style="max-width: 300px;" alt="${room}">`
+									).join('');
+									inspirationImage.innerHTML = imagesHTML;
+								}
+
+								tabButtons.forEach(button => {
+									button.addEventListener('click', () => {
+										tabButtons.forEach(btn => btn.classList.remove('active'));
+										button.classList.add('active');
+										const room = button.getAttribute('data-room');
+										showImages(room);
+									});
+								});
+
+								// แสดงภาพหมวด "ทั้งหมด" ทันทีเมื่อโหลดหน้าเว็บ
+								window.addEventListener('DOMContentLoaded', () => {
+									showImages('all');
+								});
+
+							</script>
+
+						</div>
+						<div class="inspiration-content">
+							<!-- เปลี่ยนรูปภาพตามแท็บ -->
+						</div>
+					</div>
+
+					<!-- Product Grid -->
+					<div class="product-grid">
+						<!-- เติมสินค้าแบบ dynamic -->
+					</div>
+				</section>
 
 			</div>
-		</div>
+		</section>
 	</div>
 
 
@@ -209,35 +353,10 @@
 	<script src="js/custom.js"></script>
 
 	<script>
+		const API_BASE = 'http://localhost:3000/api/product';
+
 		document.addEventListener("DOMContentLoaded", () => {
-			fetch('http://localhost:3000/api/products')
-				.then(response => response.json())
-				.then(products => {
-					console.log("Products:", products);
-					const productContainer = document.getElementById("product-list");
-					if (!productContainer) return;
-
-					productContainer.innerHTML = ''; // ล้าง placeholder เดิม
-
-					products.forEach(product => {
-						const html = `
-					  <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<div class="product-item">
-						  <img src="${product.image_url}" class="img-fluid product-thumbnail">
-						  <h3 class="product-title">${product.name}</h3>
-						  <strong class="product-price">$${product.price.toFixed(2)}</strong>
-						  <span class="icon-cross" onclick="addToCart(${product.id})">
-							<img src="images/cross.svg" class="img-fluid">
-						  </span>
-						</div>
-					  </div>
-					`;
-						productContainer.innerHTML += html;
-					});
-				})
-				.catch(error => {
-					console.error("Error fetching products:", error);
-				});
+			loadCategoryRepresentatives(); // ✅ โหลดแค่ตัวแทนสินค้า
 		});
 
 		//เพิ่มสินค้า
@@ -245,20 +364,91 @@
 			fetch('http://localhost:3000/api/cart', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ product_id: productId, quantity: 1 })
+				body: JSON.stringify({ product_id: productId })
 			})
 				.then(res => res.json())
 				.then(data => {
-					if (data.success) {
-						alert("✅ Added to cart!");
-					} else {
-						alert("❌ Failed to add to cart");
-					}
-				})
-				.catch(err => {
-					console.error("Add to cart error:", err);
+					if (data.success) alert("เพิ่มสินค้าในตะกร้าสำเร็จ");
+					else alert("เกิดข้อผิดพลาดขณะเพิ่มสินค้า");
 				});
 		}
+
+		function loadProducts(category = '') {
+			const url = category
+				? `${API_BASE}/products?category=${encodeURIComponent(category)}`
+				: `${API_BASE}/products`;
+
+			fetch(url)
+				.then(res => res.json())
+				.then(displayProducts)
+				.catch(err => {
+					console.error("โหลดสินค้าไม่สำเร็จ:", err);
+					document.getElementById('product-list').innerHTML = '<p class="text-danger">เกิดข้อผิดพลาดในการโหลดสินค้า</p>';
+				});
+		}
+
+		function loadCategoryRepresentatives() {
+			fetch(`${API_BASE}/representatives`)
+				.then(res => res.json())
+				.then(displayProducts)
+				.catch(err => {
+					console.error("โหลดตัวแทนสินค้าไม่สำเร็จ:", err);
+					document.getElementById('product-list').innerHTML = '<p class="text-danger">เกิดข้อผิดพลาดในการโหลดสินค้า</p>';
+				});
+		}
+
+
+		function filterCategory(category) {
+			fetch(`http://localhost:3000/api/products?category=${encodeURIComponent(category)}`)
+				.then(res => res.json())
+				.then(products => {
+					const container = document.getElementById('product-list');
+					container.innerHTML = '';
+
+					if (products.length === 0) {
+						container.innerHTML = '<p class="text-center">ไม่พบสินค้าในหมวดนี้</p>';
+						return;
+					}
+
+					products.forEach(product => {
+						const productHTML = `
+					<div class="col-12 col-md-4 col-lg-3 mb-4">
+						<div class="product-item text-center">
+							<img src="${product.image_url}" alt="${product.name}" class="img-fluid mb-3" style="height:200px; object-fit:cover;">
+							<h5>${product.name}</h5>
+							<p class="text-muted">${product.description}</p>
+							<p><strong>฿${product.price.toFixed(2)}</strong></p>
+							<button class="btn btn-outline-primary" onclick="addToCart(${product.id})">+ เพิ่มใส่ตะกร้า</button>
+						</div>
+					</div>`;
+						container.insertAdjacentHTML('beforeend', productHTML);
+					});
+				})
+				.catch(err => {
+					console.error("Error fetching products:", err);
+					document.getElementById('product-list').innerHTML = '<p class="text-danger">เกิดข้อผิดพลาดในการโหลดสินค้า</p>';
+				});
+		}
+
+		function displayProducts(products) {
+			const productList = document.getElementById('product-list');
+			productList.innerHTML = '';
+			products.forEach(p => {
+				productList.innerHTML += `
+			<div class="col-12 col-md-4 col-lg-3 mb-4">
+				<div class="product-item">
+					<img src="${p.image_url}" class="img-fluid" alt="${p.name}">
+					<h3>${p.name}</h3>
+					<p>${p.description}</p>
+					<p><strong>${p.price.toFixed(2)} บาท</strong></p>
+					<button class="btn btn-sm btn-outline-dark" onclick="addToCart(${p.id})">เพิ่มในตะกร้า</button>
+				</div>
+			</div>
+		`;
+			});
+		}
+
+
 	</script>
 
 </body>

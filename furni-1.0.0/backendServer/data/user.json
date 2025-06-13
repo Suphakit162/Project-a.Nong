@@ -5,5 +5,12 @@
     "email": "supakita1234@gmail.com",
     "address": "111",
     "password": "123456"
+  },
+  {
+    "firstName": "Kevin",
+    "lastName": "De Bruyne",
+    "email": "Bruyne17@UK.King",
+    "address": "Norwich, 1191/100 England",
+    "password": "kdb17"
   }
 ]
