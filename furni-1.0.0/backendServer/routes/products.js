@@ -41,6 +41,26 @@ router.get('/representatives', (req, res) => {
   });
 });
 
+// ✅ Search สินค้า
+router.get('/search', (req, res) => {
+  const keyword = req.query.q;
+
+  if (!keyword) {
+    return res.status(400).json({ error: 'กรุณาระบุคำค้นหา' });
+  }
+
+  const sql = `SELECT * FROM products WHERE name LIKE ?`;
+  const params = [`%${keyword}%`];
+
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(rows);
+  });
+});
+
+
 
 
 

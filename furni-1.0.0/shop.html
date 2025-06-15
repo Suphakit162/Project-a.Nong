@@ -82,23 +82,207 @@
 	<div class="untree_co-section product-section before-footer-section">
 		<section class="product-category-section py-5">
 			<div class="container">
+
 				<!-- Section 1: Product Category -->
-				<div id="inspiration-image" class="d-flex overflow-auto gap-3 mb-4">
-					<button class="btn btn-dark rounded-pill px-4" onclick="filterCategory('ทั้งหมด')">ทั้งหมด</button>
-					<button class="btn btn-outline-dark rounded-pill px-4"
-						onclick="filterCategory('เก้าอี้')">เก้าอี้</button>
-					<button class="btn btn-outline-dark rounded-pill px-4"
-						onclick="filterCategory('โต๊ะ')">โต๊ะ</button>
-					<button class="btn btn-outline-dark rounded-pill px-4"
-						onclick="filterCategory('โซฟา')">โซฟา</button>
-					<button class="btn btn-outline-dark rounded-pill px-4"
-						onclick="filterCategory('เตียงนอน')">เตียงนอน</button>
-				</div>
+				<section id="shop-navigation" class="p-4 bg-gray-50">
+					<div class="flex flex-row gap-4 justify-between items-center flex-wrap">
+
+						<!-- Shop Products -->
+						<div class="container my-4">
+							<h2>Shop Product</h2>
+							<div class="scrolling-categories d-flex overflow-auto pb-2" id="categoryTabs">
+								<div class="category-tab" onclick="filterCategory('ทั้งหมด', true)">
+									<img src="images/procat-all.jpg" alt="ทั้งหมด">
+									<span>ทั้งหมด</span>
+								</div>
+								<div class="category-tab" onclick="filterCategory('เก้าอี้', true)">
+									<img src="images/procat-chair.avif" alt="เก้าอี้">
+									<span>เก้าอี้</span>
+								</div>
+								<div class="category-tab" onclick="filterCategory('โต๊ะ', true)">
+									<img src="images/procat-table.avif" alt="โต๊ะ">
+									<span>โต๊ะ</span>
+								</div>
+								<div class="category-tab" onclick="filterCategory('โซฟา', true)">
+									<img src="images/procat-sofa.avif" alt="โซฟา">
+									<span>โซฟา</span>
+								</div>
+								<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+									<img src="images/procat-bed.avif" alt="เตียงนอน">
+									<span>เตียงนอน</span>
+								</div>
+								<div class="category-tab" data-category="decor">
+									<img src="images/procat-decco.avif" alt="ของตกแต่ง">
+									<span>ของตกแต่ง</span>
+								</div>
+								<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+									<img src="images/procat-bed.avif" alt="เตียงนอน">
+									<span>เตียงนอน</span>
+								</div>
+								<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+									<img src="images/procat-bed.avif" alt="เตียงนอน">
+									<span>เตียงนอน</span>
+								</div>
+								<!-- เพิ่มตามต้องการ -->
+							</div>
+						</div>
+
+						<style>
+							.scrolling-categories {
+								white-space: nowrap;
+								scrollbar-width: none;
+								-ms-overflow-style: none;
+							}
+
+							.scrolling-categories::-webkit-scrollbar {
+								display: none;
+							}
+
+							.category-tab {
+								flex-shrink: 0;
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								justify-content: center;
+								margin-right: 24px;
+								cursor: pointer;
+								padding: 16px 12px;
+								border-radius: 16px;
+								transition: background-color 0.3s;
+								min-width: 180px;
+								/* บังคับให้แท็บกว้างขึ้น */
+								height: 200px;
+								/* ขยายความสูง */
+								background-color: #f8f8f8;
+								box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+							}
+
+							.category-tab img {
+								width: 130px;
+								height: 120px;
+								margin-bottom: 5px;
+								object-fit: contain;
+							}
+
+							.category-tab span {
+								font-size: 16px;
+								font-weight: 500;
+								color: #333;
+							}
+
+							.category-tab.active {
+								background-color: #000;
+							}
+
+							.category-tab.active span {
+								color: #fff;
+							}
+
+							.category-tab.active img {
+								/* filter: brightness(0) invert(1); */
+								filter: brightness(1);
+							}
+						</style>
+					</div>
+
+				</section>
+
+				<!-- Shop by Room -->
+				<section class="my-8">
+					<h2 class="text-xl font-semibold text-center mb-4">ช้อปจากห้องต่างๆ</h2>
+
+					<!-- Scroll container -->
+					<div class="scroll-rooms overflow-x-auto whitespace-nowrap px-6 pb-4 scroll-smooth">
+						<!-- Room cards wrapper -->
+						<div class="inline-flex gap-4">
+							<!-- ห้องนอน -->
+							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('bedroom')">
+								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+									<img src="images/shopByRoom-BedRM.avif" alt="ห้องนอน"
+										class="w-full h-full object-cover" />
+								</div>
+								<p class="text-center mt-2 text-sm">ห้องนอน</p>
+							</div>
+
+							<!-- ห้องเด็ก -->
+							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('kid')">
+								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+									<img src="images/shopByRoom-KidRM.avif" alt="ห้องเด็ก"
+										class="w-full h-full object-cover" />
+								</div>
+								<p class="text-center mt-2 text-sm">ห้องเด็กอ่อนและห้องเด็ก</p>
+							</div>
+
+							<!-- ห้องนั่งเล่น -->
+							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('living')">
+								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+									<img src="images/shopByRoom-LivRM.avif" alt="ห้องนั่งเล่น"
+										class="w-full h-full object-cover" />
+								</div>
+								<p class="text-center mt-2 text-sm">ห้องนั่งเล่น</p>
+							</div>
+
+							<!-- ห้องครัว -->
+							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('kitchen')">
+								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+									<img src="images/shopByRoom-KidRM3.webp" width="300px" height="170px" alt="ห้องครัว"
+										class="w-full h-full object-cover" />
+								</div>
+								<p class="text-center mt-2 text-sm">ห้องครัว</p>
+							</div>
+
+							<!-- ห้องทำงาน -->
+							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('work')">
+								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+									<img src="images/shopByRoom-WorRM.avif" alt="ห้องทำงาน"
+										class="w-full h-full object-cover" />
+								</div>
+								<p class="text-center mt-2 text-sm">ห้องทำงาน</p>
+							</div>
+
+							<!-- ห้องเล่นเกม -->
+							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('game')">
+								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+									<img src="images/shopByRoom-GmRM.avif" alt="ห้องเล่นเกม"
+										class="w-full h-full object-cover" />
+								</div>
+								<p class="text-center mt-2 text-sm">ห้องเล่นเกม</p>
+							</div>
+						</div>
+						<style>
+							.scroll-rooms {
+								white-space: nowrap;
+								scrollbar-width: none;
+								-ms-overflow-style: none;
+								overflow-x: auto;
+							}
+
+							.scroll-rooms::-webkit-scrollbar {
+								display: none;
+							}
+						</style>
+
+					</div>
+				</section>
+
+				<!-- Search -->
+				<div class="text-center flex-1 min-w-[250px]">
+					<h2 class="text-lg font-semibold mb-2">Search</h2>
+					<input type="text" id="searchInput" class="border p-2 rounded w-48" placeholder="ค้นหาสินค้า...">
+					<button onclick="searchProducts()" class="ml-2 bg-black text-white px-3 py-2 rounded">ค้นหา</button>
+					<p id="searchNotFound" class="text-red-500 mt-2 hidden">ไม่พบสินค้า</p>
+				  </div>
+
+
+
 
 				<!-- สินค้าตามหมวดหมู่ -->
 				<div class="row" id="product-list">
 					<!-- JS จะใส่สินค้าเข้ามาตรงนี้ -->
 				</div>
+
+				<!-- 🔍 แสดงผลการค้นหา -->
+				<div id="search-results" class="grid grid-cols-3 gap-4 mt-4"></div>
 
 				<section class="product-display">
 					<!-- Section 2: Promotions -->
@@ -161,7 +345,7 @@
 					</div>
 
 					<!-- Section 3: Ideas & Inspirations -->
-					<div class="inspiration">
+					<div class="inspiration" id="inspiration">
 						<div class="tabs">
 							<h2 class="mb-4">ไอเดีย & แรงบันดาลใจเพิ่มเติม</h2>
 							<div class="mb-4 d-flex gap-3">
@@ -170,16 +354,53 @@
 								<button class="btn btn-outline-secondary inspiration-tab"
 									data-room="bedroom">ห้องนอน</button>
 								<button class="btn btn-outline-secondary inspiration-tab"
+									data-room="kid">ห้องเด็ก</button>
+								<button class="btn btn-outline-secondary inspiration-tab"
 									data-room="living">ห้องนั่งเล่น</button>
+								<button class="btn btn-outline-secondary inspiration-tab"
+									data-room="kitchen">ห้องครัว</button>
 								<button class="btn btn-outline-secondary inspiration-tab"
 									data-room="work">ห้องทำงาน</button>
 								<button class="btn btn-outline-secondary inspiration-tab"
-									data-room="kitchen">ห้องครัว</button>
+									data-room="game">ห้องเล่นเกม</button>
 							</div>
 
 							<div id="inspiration-display">
 								<!-- รูปภาพจะแสดงที่นี่ -->
 							</div>
+
+							<!--CSS ของ Section 3 โดยเพราะ-->
+							<style>
+								#inspiration-display {
+									column-count: 3;
+									column-gap: 16px;
+								}
+
+								#inspiration-display img {
+									width: 100%;
+									margin-bottom: 16px;
+									border-radius: 12px;
+									box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+									break-inside: avoid;
+								}
+
+								#inspiration-display img {
+									transition: all 0.3s ease-in-out;
+								}
+
+
+								@media (max-width: 768px) {
+									#inspiration-display {
+										column-count: 2;
+									}
+								}
+
+								@media (max-width: 480px) {
+									#inspiration-display {
+										column-count: 1;
+									}
+								}
+							</style>
 
 							<!--script ของ Section 3 โดยเฉพาะ-->
 							<script>
@@ -190,14 +411,16 @@
 								const roomImages = {
 									all: ['images/inspi-all1.avif', 'images/inspi-all2.avif', 'images/inspi-all3.avif', 'images/inspi-all4.avif', 'images/inspi-all5.avif', 'images/inspi-all6.avif'],
 									bedroom: ['images/inspi-bed1.avif', 'images/inspi-bed2.avif', 'images/inspi-bed3.avif', 'images/inspi-bed4.avif', 'images/inspi-bed5.webp', 'images/inspi-bed6.avif'],
+									kid: ['images/inspi-kid1.avif', 'images/inspi-kid2.avif', 'images/inspi-kid3.avif', 'images/inspi-kid4.avif', 'images/inspi-kid5.avif', 'images/inspi-kid6.avif'],
 									living: ['images/inspi-liv1.avif', 'images/inspi-liv2.webp', 'images/inspi-liv3.avif', 'images/inspi-liv4.avif', 'images/inspi-liv5.avif', 'images/inspi-liv6.avif'],
+									kitchen: ['images/inspi-kit1.avif', 'images/inspi-kit2.avif', 'images/inspi-kit3.avif', 'images/inspi-kit4.avif', 'images/inspi-kit5.avif', 'images/inspi-kit6.avif'],
 									work: ['images/inspi-work1.avif', 'images/inspi-work2.avif', 'images/inspi-work3.avif', 'images/inspi-work4.avif', 'images/inspi-work5.avif', 'images/inspi-work6.avif'],
-									kitchen: ['images/inspi-kit1.avif', 'images/inspi-kit2.avif', 'images/inspi-kit3.avif', 'images/inspi-kit4.avif', 'images/inspi-kit5.avif', 'images/inspi-kit6.avif']
+									game: ['images/inspi-gam1.avif', 'images/inspi-gam3.avif', 'images/inspi-gam2.avif', 'images/inspi-gam4.avif', 'images/inspi-gam5.avif', 'images/inspi-gam6.avif']
 								};
 
 								function showImages(room) {
 									const imagesHTML = roomImages[room].map(img =>
-										`<img src="${img}" class="img-fluid rounded shadow" style="max-width: 300px;" alt="${room}">`
+										`<img src="${img}" class="img-fluid rounded shadow" alt="${room}">`
 									).join('');
 									inspirationImage.innerHTML = imagesHTML;
 								}
@@ -355,9 +578,7 @@
 	<script>
 		const API_BASE = 'http://localhost:3000/api/product';
 
-		document.addEventListener("DOMContentLoaded", () => {
-			loadCategoryRepresentatives(); // ✅ โหลดแค่ตัวแทนสินค้า
-		});
+
 
 		//เพิ่มสินค้า
 		function addToCart(productId) {
@@ -397,8 +618,12 @@
 				});
 		}
 
+		let isLoading = false;
 
 		function filterCategory(category) {
+			if (isLoading) return; // ป้องกันกดซ้ำ
+			isLoading = true;
+
 			fetch(`http://localhost:3000/api/products?category=${encodeURIComponent(category)}`)
 				.then(res => res.json())
 				.then(products => {
@@ -427,7 +652,11 @@
 				.catch(err => {
 					console.error("Error fetching products:", err);
 					document.getElementById('product-list').innerHTML = '<p class="text-danger">เกิดข้อผิดพลาดในการโหลดสินค้า</p>';
+				})
+				.finally(() => {
+					isLoading = false; // reset
 				});
+
 		}
 
 		function displayProducts(products) {
@@ -448,6 +677,103 @@
 			});
 		}
 
+		document.addEventListener("DOMContentLoaded", () => {
+			loadCategoryRepresentatives(); // ✅ โหลดแค่ตัวแทนสินค้า
+
+
+			const tabs = document.querySelectorAll('.category-tab');
+
+			tabs.forEach(tab => {
+				tab.addEventListener('click', () => {
+					// เปลี่ยน tab active
+					tabs.forEach(t => t.classList.remove('active'));
+					tab.classList.add('active');
+
+					// ดึง category จาก data-category
+					const category = tab.getAttribute('data-category');
+
+					// โหลดสินค้าใหม่ตาม category จาก API
+					if (category === 'all') {
+						loadCategoryRepresentatives(); // หรือ loadProducts() เพื่อโหลดสินค้าทั้งหมด
+					} else {
+						filterCategory(category);
+					}
+				});
+			});
+		});
+
+		// ฟังก์ชันกรองสินค้าตามหมวด Product category
+		function filterProductsByCategory(category) {
+			const products = document.querySelectorAll('.product-item');
+
+			products.forEach(product => {
+				const productCategory = product.getAttribute('data-category');
+				if (category === 'all' || productCategory === category) {
+					product.style.display = 'block';
+				} else {
+					product.style.display = 'none';
+				}
+			});
+		}
+
+		// ฟังก์ชันค้นหาสินค้า
+		async function searchProducts() {
+			const input = document.getElementById('searchInput').value.trim();
+			const notFoundMsg = document.getElementById('searchNotFound');
+			const productList = document.getElementById('search-results');
+			productList.innerHTML = ''; // ล้างผลลัพธ์เก่า
+			notFoundMsg.classList.add('hidden');
+
+			if (!input) {
+				notFoundMsg.textContent = "กรุณากรอกคำค้นหา";
+				notFoundMsg.classList.remove('hidden');
+				return;
+			}
+
+			try {
+				const res = await fetch(`http://localhost:3000/api/products/search?q=${encodeURIComponent(input)}`);
+				if (!res.ok) {
+					throw new Error(`ค้นหาไม่สำเร็จ: ${res.status}`);
+				}
+
+				const products = await res.json();
+
+				if (products.length === 0) {
+					notFoundMsg.textContent = "ไม่พบสินค้า";
+					notFoundMsg.classList.remove('hidden');
+					return;
+				}
+
+				products.forEach(p => {
+					const div = document.createElement('div');
+					div.classList.add('product-item', 'border', 'p-4', 'rounded');
+					div.innerHTML = `
+        <img src="${p.image_url}" alt="${p.name}" class="w-full h-40 object-cover mb-2" />
+        <h3 class="font-semibold">${p.name}</h3>
+        <p class="text-gray-600">${p.description}</p>
+        <p class="mt-1 font-bold">฿${p.price.toFixed(2)}</p>
+      `;
+					productList.appendChild(div);
+				});
+			} catch (error) {
+				console.error(error);
+				notFoundMsg.textContent = "เกิดข้อผิดพลาดในการค้นหา";
+				notFoundMsg.classList.remove('hidden');
+			}
+		}
+
+
+		// ฟังก์ชัน scroll ไปยัง section หมวดห้อง
+		function scrollToRoom(room) {
+			// Scroll ไปยัง Section "ไอเดีย & แรงบันดาลใจเพิ่มเติม"
+			document.getElementById('inspiration').scrollIntoView({ behavior: 'smooth' });
+
+			// หาปุ่มที่ตรงกับ data-room แล้วคลิก
+			const tab = document.querySelector(`.inspiration-tab[data-room="${room}"]`);
+			if (tab) {
+				tab.click(); // trigger การเปลี่ยนแท็บและโหลดภาพ
+			}
+		}
 
 	</script>
 
