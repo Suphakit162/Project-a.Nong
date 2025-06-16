@@ -164,6 +164,7 @@
       </div>
     </div>
   </section>
+  
 </body>
 <!-- Bootstrap 5 JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -173,32 +174,37 @@
 
 <script>
   function loginSubmit() {
-    const email = document.getElementById('email-login').value.trim();
-    const password = document.getElementById('password-login').value.trim();
+  const email = document.getElementById('email-login').value.trim();
+  const password = document.getElementById('password-login').value.trim();
 
-    if (!email || !password) {
-      alert('กรุณากรอก Email และ Password');
-      return;
-    }
-
-    fetch('http://localhost:3000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username: email, password: password })
-    })
-    .then(response => response.json())
-    .then(data => {
-      alert(data.message);
-      // ถ้า login สำเร็จ อาจ redirect ไปหน้าหลัก:
-      // window.location.href = "main-page.html";
-    })
-    .catch(error => {
-      console.error('Login error:', error);
-      alert('เกิดข้อผิดพลาดในการเข้าสู่ระบบ');
-    });
+  if (!email || !password) {
+    alert('กรุณากรอก Email และ Password');
+    return;
   }
+
+  fetch('http://localhost:3000/api/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ username: email, password: password })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message);
+    // ถ้า login สำเร็จ:
+    if (data.message === 'Login successfully.') {
+      window.location.href = "/index.html"; // แก้ชื่อไฟล์ตามที่คุณต้องการ
+    }
+  })
+  .catch(error => {
+    console.error('Login error:', error);
+    alert('เกิดข้อผิดพลาดในการเข้าสู่ระบบ');
+  });
+
+  
+
+}
 </script>
 
 
