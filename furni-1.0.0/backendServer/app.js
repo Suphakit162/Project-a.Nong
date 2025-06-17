@@ -16,8 +16,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..')));
 console.log('Static root folder is:', path.join(__dirname, '..'));
 
-
-
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', ordersRoutes);
