@@ -3,7 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./ecommerce.db');
+const db = new sqlite3.Database('./db/ecommerce.db');
 
 const productRoutes = require('./routes/products');
 const cartRoutes = require('./routes/cart');
@@ -28,23 +28,38 @@ const PORT = 3000;
 
 // === ADMIN APIs ===
 
+
 // ดึงสินค้าทั้งหมด
 app.get('/api/admin/products', (req, res) => {
   db.all('SELECT * FROM products', [], (err, rows) => {
-    if (err) return res.status(500).json({ error: err.message });
+    if (err) {
+      console.error('Error fetching products:', err.message);
+      return res.status(500).json({ error: err.message });
+    }
     res.json(rows);
   });
 });
 
+
 // เพิ่มสินค้าใหม่
 app.post('/api/admin/products', (req, res) => {
-  const { name, description, price, image } = req.body;
-  const sql = 'INSERT INTO products (name, description, price, image) VALUES (?, ?, ?, ?)';
-  db.run(sql, [name, description, price, image], function (err) {
-    if (err) return res.status(500).json({ error: err.message });
+  const { name, description, price, image_url, category } = req.body;
+
+  // ตรวจสอบข้อมูลก่อน
+  if (!name || !price || !image_url) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  const sql = 'INSERT INTO products (name, description, price, image_url, category) VALUES (?, ?, ?, ?, ?)';
+  db.run(sql, [name, description, price, image_url, category], function (err) {
+    if (err) {
+      console.error('Error inserting product:', err.message);
+      return res.status(500).json({ error: err.message });
+    }
     res.json({ id: this.lastID });
   });
 });
+
 
 // ลบสินค้า
 app.delete('/api/admin/products/:id', (req, res) => {
@@ -57,13 +72,14 @@ app.delete('/api/admin/products/:id', (req, res) => {
 
 // แก้ไขสินค้า
 app.put('/api/admin/products/:id', (req, res) => {
-  const { name, description, price, image } = req.body;
-  const sql = 'UPDATE products SET name=?, description=?, price=?, image=? WHERE id=?';
-  db.run(sql, [name, description, price, image, req.params.id], function (err) {
+  const { name, description, price, image_url, category } = req.body;
+  const sql = 'UPDATE products SET name=?, description=?, price=?, image_url=?, category=? WHERE id=?';
+  db.run(sql, [name, description, price, image_url, category, req.params.id], function (err) {
     if (err) return res.status(500).json({ error: err.message });
     res.json({ updated: this.changes });
   });
 });
+
 
 
 app.listen(PORT, () => {
