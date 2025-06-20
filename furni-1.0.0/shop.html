@@ -22,6 +22,10 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<link href="css/tiny-slider.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
 	<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
 </head>
 
@@ -80,380 +84,546 @@
 
 
 	<div class="untree_co-section product-section before-footer-section">
-		<section class="product-category-section py-5">
+		<section class="product-category-section py-5" style="background-color: #fff;">
 			<div class="container">
 
-				<!-- Section 1: Product Category -->
-				<section id="shop-navigation" class="p-4 bg-gray-50">
-					<div class="flex flex-row gap-4 justify-between items-center flex-wrap">
+				<!-- Navigation Tabs -->
+				<div class="flex justify-center space-x-8 border-b border-gray-200 mb-4">
+					<button class="shop-tab active-tab " onclick="showTab('products')">
+						<i class="fas fa-box mr-2 w"></i> ช้อปสินค้า
+					</button>
+					<button class="shop-tab" onclick="showTab('rooms')">
+						<i class="fas fa-home mr-2"></i> ช้อปจากห้องต่างๆ
+					</button>
 
-						<!-- Shop Products -->
-						<div class="container my-4">
-							<h2>Shop Product</h2>
-							<div class="scrolling-categories d-flex overflow-auto pb-2" id="categoryTabs">
-								<div class="category-tab" onclick="filterCategory('ทั้งหมด', true)">
-									<img src="images/procat-all.jpg" alt="ทั้งหมด">
-									<span>ทั้งหมด</span>
-								</div>
-								<div class="category-tab" onclick="filterCategory('เก้าอี้', true)">
-									<img src="images/procat-chair.avif" alt="เก้าอี้">
-									<span>เก้าอี้</span>
-								</div>
-								<div class="category-tab" onclick="filterCategory('โต๊ะ', true)">
-									<img src="images/procat-table.avif" alt="โต๊ะ">
-									<span>โต๊ะ</span>
-								</div>
-								<div class="category-tab" onclick="filterCategory('โซฟา', true)">
-									<img src="images/procat-sofa.avif" alt="โซฟา">
-									<span>โซฟา</span>
-								</div>
-								<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
-									<img src="images/procat-bed.avif" alt="เตียงนอน">
-									<span>เตียงนอน</span>
-								</div>
-								<div class="category-tab" data-category="decor">
-									<img src="images/procat-decco.avif" alt="ของตกแต่ง">
-									<span>ของตกแต่ง</span>
-								</div>
-								<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
-									<img src="images/procat-bed.avif" alt="เตียงนอน">
-									<span>เตียงนอน</span>
-								</div>
-								<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
-									<img src="images/procat-bed.avif" alt="เตียงนอน">
-									<span>เตียงนอน</span>
-								</div>
-								<!-- เพิ่มตามต้องการ -->
-							</div>
-						</div>
-
-						<style>
-							.scrolling-categories {
-								white-space: nowrap;
-								scrollbar-width: none;
-								-ms-overflow-style: none;
-							}
-
-							.scrolling-categories::-webkit-scrollbar {
-								display: none;
-							}
-
-							.category-tab {
-								flex-shrink: 0;
-								display: flex;
-								flex-direction: column;
-								align-items: center;
-								justify-content: center;
-								margin-right: 24px;
-								cursor: pointer;
-								padding: 16px 12px;
-								border-radius: 16px;
-								transition: background-color 0.3s;
-								min-width: 180px;
-								/* บังคับให้แท็บกว้างขึ้น */
-								height: 200px;
-								/* ขยายความสูง */
-								background-color: #f8f8f8;
-								box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-							}
-
-							.category-tab img {
-								width: 130px;
-								height: 120px;
-								margin-bottom: 5px;
-								object-fit: contain;
-							}
-
-							.category-tab span {
-								font-size: 16px;
-								font-weight: 500;
-								color: #333;
-							}
-
-							.category-tab.active {
-								background-color: #000;
-							}
-
-							.category-tab.active span {
-								color: #fff;
-							}
-
-							.category-tab.active img {
-								/* filter: brightness(0) invert(1); */
-								filter: brightness(1);
-							}
-						</style>
-					</div>
-
-				</section>
-
-				<!-- Shop by Room -->
-				<section class="my-8">
-					<h2 class="text-xl font-semibold text-center mb-4">ช้อปจากห้องต่างๆ</h2>
-
-					<!-- Scroll container -->
-					<div class="scroll-rooms overflow-x-auto whitespace-nowrap px-6 pb-4 scroll-smooth">
-						<!-- Room cards wrapper -->
-						<div class="inline-flex gap-4">
-							<!-- ห้องนอน -->
-							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('bedroom')">
-								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
-									<img src="images/shopByRoom-BedRM.avif" alt="ห้องนอน"
-										class="w-full h-full object-cover" />
-								</div>
-								<p class="text-center mt-2 text-sm">ห้องนอน</p>
-							</div>
-
-							<!-- ห้องเด็ก -->
-							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('kid')">
-								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
-									<img src="images/shopByRoom-KidRM.avif" alt="ห้องเด็ก"
-										class="w-full h-full object-cover" />
-								</div>
-								<p class="text-center mt-2 text-sm">ห้องเด็กอ่อนและห้องเด็ก</p>
-							</div>
-
-							<!-- ห้องนั่งเล่น -->
-							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('living')">
-								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
-									<img src="images/shopByRoom-LivRM.avif" alt="ห้องนั่งเล่น"
-										class="w-full h-full object-cover" />
-								</div>
-								<p class="text-center mt-2 text-sm">ห้องนั่งเล่น</p>
-							</div>
-
-							<!-- ห้องครัว -->
-							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('kitchen')">
-								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
-									<img src="images/shopByRoom-KidRM3.webp" width="300px" height="170px" alt="ห้องครัว"
-										class="w-full h-full object-cover" />
-								</div>
-								<p class="text-center mt-2 text-sm">ห้องครัว</p>
-							</div>
-
-							<!-- ห้องทำงาน -->
-							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('work')">
-								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
-									<img src="images/shopByRoom-WorRM.avif" alt="ห้องทำงาน"
-										class="w-full h-full object-cover" />
-								</div>
-								<p class="text-center mt-2 text-sm">ห้องทำงาน</p>
-							</div>
-
-							<!-- ห้องเล่นเกม -->
-							<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('game')">
-								<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
-									<img src="images/shopByRoom-GmRM.avif" alt="ห้องเล่นเกม"
-										class="w-full h-full object-cover" />
-								</div>
-								<p class="text-center mt-2 text-sm">ห้องเล่นเกม</p>
-							</div>
-						</div>
-						<style>
-							.scroll-rooms {
-								white-space: nowrap;
-								scrollbar-width: none;
-								-ms-overflow-style: none;
-								overflow-x: auto;
-							}
-
-							.scroll-rooms::-webkit-scrollbar {
-								display: none;
-							}
-						</style>
-
-					</div>
-				</section>
-
-				<!-- Search -->
-				<div class="text-center flex-1 min-w-[250px]">
-					<h2 class="text-lg font-semibold mb-2">Search</h2>
+					<!-- Search -->
 					<input type="text" id="searchInput" class="border p-2 rounded w-48" placeholder="ค้นหาสินค้า...">
-					<button onclick="searchProducts()" class="ml-2 bg-black text-white px-3 py-2 rounded">ค้นหา</button>
-					<p id="searchNotFound" class="text-red-500 mt-2 hidden">ไม่พบสินค้า</p>
-				  </div>
 
 
+					<style>
+						.shop-tab {
+							padding: 1rem 2rem;
+							font-size: 1rem;
+							font-weight: 500;
+							color: #555;
+							border: none;
+							background: none;
+							cursor: pointer;
+							border-bottom: 2px solid transparent;
+						}
+
+						.shop-tab.active-tab {
+							color: #000;
+							border-color: #000;
+							font-weight: bold;
+						}
+
+					</style>
 
 
-				<!-- สินค้าตามหมวดหมู่ -->
-				<div class="row" id="product-list">
-					<!-- JS จะใส่สินค้าเข้ามาตรงนี้ -->
-				</div>
+					<!-- Section 1: Product Category -->
+					<div id="tab-products">
+						<section id="shop-navigation" class="p-4 bg-gray-50">
+							<div class="flex flex-row gap-4 justify-between items-center flex-wrap">
 
-				<!-- 🔍 แสดงผลการค้นหา -->
-				<div id="search-results" class="grid grid-cols-3 gap-4 mt-4"></div>
+								<!-- Shop Products -->
+								<div class="container my-4">
+									<div class="scrolling-categories-wrapper">
+										<div class="scrolling-categories d-flex overflow-auto pb-2" id="categoryTabs">
+											<div class="category-tab" onclick="filterCategory('ทั้งหมด', true)">
+												<img src="images/procat-all.jpg" alt="ทั้งหมด">
+												<span>ทั้งหมด</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('เก้าอี้', true)">
+												<img src="images/procat-chair.png" alt="เก้าอี้">
+												<span>เก้าอี้</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('โต๊ะ', true)">
+												<img src="images/procat-table.png" alt="โต๊ะ">
+												<span>โต๊ะ</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('โซฟา', true)">
+												<img src="images/procat-sofa.png" alt="โซฟา">
+												<span>โซฟา</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+												<img src="images/procat-bed.png" alt="เตียงนอน">
+												<span>เตียงนอน</span>
+											</div>
+											<div class="category-tab" data-category="decor">
+												<img src="images/procat-decco.avif" alt="ของตกแต่ง">
+												<span>ของตกแต่ง</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+												<img src="images/procat-bed.avif" alt="เตียงนอน">
+												<span>เตียงนอน</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+												<img src="images/procat-bed.avif" alt="เตียงนอน">
+												<span>เตียงนอน</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+												<img src="images/procat-bed.avif" alt="เตียงนอน">
+												<span>เตียงนอน</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+												<img src="images/procat-bed.avif" alt="เตียงนอน">
+												<span>เตียงนอน</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
+												<img src="images/procat-bed.avif" alt="เตียงนอน">
+												<span>เตียงนอน</span>
+											</div>
+											<!-- เพิ่มตามต้องการ -->
 
-				<section class="product-display">
-					<!-- Section 2: Promotions -->
-					<div class="promotions">
-						<h2 class="mb-4">โปรโมชั่น</h2>
-						<div class="row mb-5">
-							<div class="col-md-4">
-								<div class="card shadow-sm border-0 card-promo1">
-									<img src="images/promo1.avif" class="card-img-top" alt="โปรโมชั่น 1">
-									<div class="card-body text-white">
-										<h5 class="card-title">ลด 30% เก้าอี้</h5>
-										<p class="card-text">เฉพาะสินค้าที่ร่วมรายการ วันนี้ถึงสิ้นเดือนนี้</p>
-										<a href="shop.html?category=เก้าอี้" class="btn btn-dark">ดูสินค้า</a>
+										</div>
+										<!-- เส้นพื้นหลัง (เทาอ่อน) -->
+										<div class="scrolling-line-bg"></div>
+
+										<!-- เส้นเลื่อน (ดำ) -->
+										<div class="scrolling-line-fg" id="scrollingLine"></div>
 									</div>
 								</div>
+
+								<style>
+									.scrolling-categories-wrapper {
+										position: relative;
+										overflow-x: auto;
+									}
+
+									.scrolling-categories {
+										position: relative;
+										display: flex;
+										gap: 24px;
+										padding-bottom: 12px;
+										min-width: max-content;
+									}
+
+									/* เส้นพื้นหลังสีเทาอ่อน */
+									.scrolling-line-bg {
+										position: absolute;
+										bottom: 0;
+										left: 0;
+										height: 2px;
+										width: 100%;
+										background: #e0e0e0;
+										pointer-events: none;
+									}
+
+									/* เส้นหน้าสีดำ (เคลื่อนตาม scroll) */
+									.scrolling-line-fg {
+										position: absolute;
+										bottom: 0;
+										left: 0;
+										height: 2px;
+										width: 100%;
+										background: black;
+										transform: translateX(0);
+										transition: transform 0.05s linear;
+										pointer-events: none;
+									}
+
+
+
+
+
+									.scrolling-categories::-webkit-scrollbar {
+										display: none;
+									}
+
+									.category-tab {
+										flex-shrink: 0;
+										display: flex;
+										flex-direction: column;
+										align-items: center;
+										justify-content: center;
+										margin-right: 24px;
+										cursor: pointer;
+										padding: 0px 12px;
+										border-radius: 16px;
+										transition: background-color 0.3s;
+										min-width: 120px;
+										/* บังคับให้แท็บกว้างขึ้น */
+										height: 150px;
+										/* ขยายความสูง */
+									}
+
+									.category-tab img {
+										width: 100px;
+										height: 110px;
+										margin-bottom: 5px;
+										object-fit: contain;
+									}
+
+									.category-tab span {
+										font-size: 14px;
+										font-weight: 500;
+										color: #333;
+
+									}
+
+									.category-tab.active {
+										background-color: #000;
+									}
+
+									.category-tab.active span {
+										color: #fff;
+									}
+
+									.category-tab.active img {
+										/* filter: brightness(0) invert(1); */
+										filter: brightness(1);
+									}
+								</style>
 							</div>
-							<div class="col-md-4">
-								<div class="card shadow-sm border-0 card-promo2">
-									<img src="images/promo2.avif" class="card-img-top" alt="โปรโมชั่น 2">
-									<div class="card-body text-white">
-										<h5 class="card-title">สินค้าขายดี</h5>
-										<p class="card-text">ตกแต่งห้องทำงานด้วยเฟอร์นิเจอร์คุณภาพ</p>
-										<a href="shop.html?category=โต๊ะ" class="btn btn-dark">ดูสินค้า</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card shadow-sm border-0 card-promo3">
-									<img src="images/promo3.avif" class="card-img-top" alt="โปรโมชั่น 3">
-									<div class="card-body text-white">
-										<h5 class="card-title">โซฟาสุดนุ่ม ลดแรง!</h5>
-										<p class="card-text">โปรพิเศษโซฟาหลากหลายรูปแบบที่คุณต้องหลง</p>
-										<a href="shop.html?category=โซฟา" class="btn btn-dark">ดูสินค้า</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<style>
-							.card-body {
-								min-height: 200px;
-							}
 
-							.card-body .btn {
-								margin-top: 40px;
-							}
-
-							.card-promo1 {
-								background-color: rgb(var(--colour-commercial-message-ikea-family, 0, 124, 193));
-							}
-
-							.card-promo2 {
-								background-color: rgb(var(--colour-commercial-message-bti-red, 204, 0, 8));
-							}
-
-							.card-promo3 {
-								background-color: rgb(var(--colour-commercial-message-bti-yellow, 255, 219, 0));
-							}
-						</style>
-
+						</section>
 					</div>
 
-					<!-- Section 3: Ideas & Inspirations -->
-					<div class="inspiration" id="inspiration">
-						<div class="tabs">
-							<h2 class="mb-4">ไอเดีย & แรงบันดาลใจเพิ่มเติม</h2>
-							<div class="mb-4 d-flex gap-3">
-								<button class="btn btn-outline-secondary inspiration-tab active"
-									data-room="all">ทั้งหมด</button>
-								<button class="btn btn-outline-secondary inspiration-tab"
-									data-room="bedroom">ห้องนอน</button>
-								<button class="btn btn-outline-secondary inspiration-tab"
-									data-room="kid">ห้องเด็ก</button>
-								<button class="btn btn-outline-secondary inspiration-tab"
-									data-room="living">ห้องนั่งเล่น</button>
-								<button class="btn btn-outline-secondary inspiration-tab"
-									data-room="kitchen">ห้องครัว</button>
-								<button class="btn btn-outline-secondary inspiration-tab"
-									data-room="work">ห้องทำงาน</button>
-								<button class="btn btn-outline-secondary inspiration-tab"
-									data-room="game">ห้องเล่นเกม</button>
-							</div>
+					<!-- Shop by Room -->
+					<div id="tab-rooms" class="hidden">
+						<section class="my-8">
+							<h2 class="text-xl font-semibold text-center mb-4"></h2>
+							<div class="scrolling-categories-wrapper">
+								<!-- Scroll container -->
+								<div class="scrolling-categories d-flex gap-3 overflow-auto pb-2">
+									<!-- Room cards wrapper -->
 
-							<div id="inspiration-display">
-								<!-- รูปภาพจะแสดงที่นี่ -->
-							</div>
 
-							<!--CSS ของ Section 3 โดยเพราะ-->
+									<!-- ห้องนอน -->
+									<div class="flex-shrink-0 w-[200px] cursor-pointer"
+										onclick="scrollToRoom('bedroom')">
+										<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+											<img src="images/shopByRoom-BedRM.avif" width="200px" height="110px"
+												alt="ห้องนอน" class="w-full h-full object-cover" />
+										</div>
+										<p class="text-center mt-2 text-sm">ห้องนอน</p>
+									</div>
+
+									<!-- ห้องเด็ก -->
+									<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('kid')">
+										<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+											<img src="images/shopByRoom-KidRM.avif" width="200px" height="110px"
+												alt="ห้องเด็ก" class="w-full h-full object-cover" />
+										</div>
+										<p class="text-center mt-2 text-sm">ห้องเด็กอ่อนและห้องเด็ก</p>
+									</div>
+
+									<!-- ห้องนั่งเล่น -->
+									<div class="flex-shrink-0 w-[200px] cursor-pointer"
+										onclick="scrollToRoom('living')">
+										<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+											<img src="images/shopByRoom-LivRM.avif" width="200px" height="110px"
+												alt="ห้องนั่งเล่น" class="w-full h-full object-cover" />
+										</div>
+										<p class="text-center mt-2 text-sm">ห้องนั่งเล่น</p>
+									</div>
+
+									<!-- ห้องครัว -->
+									<div class="flex-shrink-0 w-[200px] cursor-pointer"
+										onclick="scrollToRoom('kitchen')">
+										<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+											<img src="images/shopByRoom-KidRM3.webp" width="200px" height="110px"
+												height="170px" alt="ห้องครัว" class="w-full h-full object-cover" />
+										</div>
+										<p class="text-center mt-2 text-sm">ห้องครัว</p>
+									</div>
+
+									<!-- ห้องทำงาน -->
+									<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('work')">
+										<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+											<img src="images/shopByRoom-WorRM.avif" width="200px" height="110px"
+												alt="ห้องทำงาน" class="w-full h-full object-cover" />
+										</div>
+										<p class="text-center mt-2 text-sm">ห้องทำงาน</p>
+									</div>
+
+									<!-- ห้องเล่นเกม -->
+									<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('game')">
+										<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+											<img src="images/shopByRoom-GmRM.avif" width="200px" height="110px"
+												alt="ห้องเล่นเกม" class="w-full h-full object-cover" />
+										</div>
+										<p class="text-center mt-2 text-sm">ห้องเล่นเกม</p>
+									</div>
+
+									<!-- ห้องเล่นเกม -->
+									<div class="flex-shrink-0 w-[200px] cursor-pointer" onclick="scrollToRoom('game')">
+										<div class="aspect-[4/3] overflow-hidden rounded-md shadow">
+											<img src="images/shopByRoom-GmRM.avif" width="200px" height="110px"
+												alt="ห้องเล่นเกม" class="w-full h-full object-cover" />
+										</div>
+										<p class="text-center mt-2 text-sm">ห้องเล่นเกม</p>
+									</div>
+
+									<style>
+										.scrolling-categories-wrapper {
+											position: relative;
+											overflow-x: auto;
+										}
+
+										.scrolling-categories {
+											position: relative;
+											display: flex;
+											gap: 24px;
+											padding-bottom: 12px;
+											min-width: max-content;
+										}
+
+										/* เส้นพื้นหลังสีเทาอ่อน */
+										.scrolling-line-bg {
+											position: absolute;
+											bottom: 0;
+											left: 0;
+											height: 2px;
+											width: 100%;
+											background: #e0e0e0;
+											pointer-events: none;
+										}
+
+										/* เส้นหน้าสีดำ (เคลื่อนตาม scroll) */
+										.scrolling-line-fg {
+											position: absolute;
+											bottom: 0;
+											left: 0;
+											height: 2px;
+											width: 100%;
+											background: black;
+											transform: translateX(0);
+											transition: transform 0.05s linear;
+											pointer-events: none;
+										}
+
+										.scroll-rooms {
+											white-space: nowrap;
+											scrollbar-width: none;
+											-ms-overflow-style: none;
+											overflow-x: auto;
+											scroll-snap-type: x mandatory;
+										}
+
+										.scroll-rooms::-webkit-scrollbar {
+											display: none;
+										}
+
+										.scroll-rooms>div>div {
+											scroll-snap-align: start;
+										}
+
+										.overflow-x-auto::-webkit-scrollbar {
+											display: none;
+										}
+
+										.overflow-x-auto {
+											-ms-overflow-style: none;
+											scrollbar-width: none;
+										}
+
+										.hidden {
+											display: none;
+										}
+
+										.active-tab {
+											/* ตัวอย่างสไตล์ปุ่ม active */
+											border-bottom: 2px solid blue;
+											font-weight: bold;
+										}
+									</style>
+
+								</div>
+							</div>
+						</section>
+					</div>
+
+
+
+
+					<!-- สินค้าตามหมวดหมู่ -->
+					<div class="row" id="product-list">
+						<!-- JS จะใส่สินค้าเข้ามาตรงนี้ -->
+					</div>
+
+					<!-- 🔍 แสดงผลการค้นหา -->
+					<div class="row" id="search-results"></div>
+					<p id="searchNotFound" class="text-red-500 mt-2 hidden" style="color: red;text-align: center;"></p>
+
+
+
+
+					<section class="product-display">
+						<!-- Section 2: Promotions -->
+						<div class="promotions">
+							<h2 class="mb-4">โปรโมชั่น</h2>
+							<div class="row mb-5">
+								<div class="col-md-4">
+									<div class="card shadow-sm border-0 card-promo1">
+										<img src="images/promo1.avif" class="card-img-top" alt="โปรโมชั่น 1">
+										<div class="card-body text-white">
+											<h5 class="card-title">ลด 30% เก้าอี้</h5>
+											<p class="card-text">เฉพาะสินค้าที่ร่วมรายการ วันนี้ถึงสิ้นเดือนนี้</p>
+											<a href="shop.html?category=เก้าอี้" class="btn btn-dark">ดูสินค้า</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card shadow-sm border-0 card-promo2">
+										<img src="images/promo2.avif" class="card-img-top" alt="โปรโมชั่น 2">
+										<div class="card-body text-white">
+											<h5 class="card-title">สินค้าขายดี</h5>
+											<p class="card-text">ตกแต่งห้องทำงานด้วยเฟอร์นิเจอร์คุณภาพ</p>
+											<a href="shop.html?category=โต๊ะ" class="btn btn-dark">ดูสินค้า</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card shadow-sm border-0 card-promo3">
+										<img src="images/promo3.avif" class="card-img-top" alt="โปรโมชั่น 3">
+										<div class="card-body text-white">
+											<h5 class="card-title">โซฟาสุดนุ่ม ลดแรง!</h5>
+											<p class="card-text">โปรพิเศษโซฟาหลากหลายรูปแบบที่คุณต้องหลง</p>
+											<a href="shop.html?category=โซฟา" class="btn btn-dark">ดูสินค้า</a>
+										</div>
+									</div>
+								</div>
+							</div>
 							<style>
-								#inspiration-display {
-									column-count: 3;
-									column-gap: 16px;
+								h2 {padding-top: 1.5rem;}
+
+								.card-body {
+									min-height: 200px;
 								}
 
-								#inspiration-display img {
-									width: 100%;
-									margin-bottom: 16px;
-									border-radius: 12px;
-									box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-									break-inside: avoid;
+								.card-body .btn {
+									margin-top: 40px;
 								}
 
-								#inspiration-display img {
-									transition: all 0.3s ease-in-out;
+								.card-promo1 {
+									background-color: rgb(var(--colour-commercial-message-ikea-family, 0, 124, 193));
 								}
 
-
-								@media (max-width: 768px) {
-									#inspiration-display {
-										column-count: 2;
-									}
+								.card-promo2 {
+									background-color: rgb(var(--colour-commercial-message-bti-red, 204, 0, 8));
 								}
 
-								@media (max-width: 480px) {
-									#inspiration-display {
-										column-count: 1;
-									}
+								.card-promo3 {
+									background-color: rgb(var(--colour-commercial-message-bti-yellow, 255, 219, 0));
 								}
 							</style>
 
-							<!--script ของ Section 3 โดยเฉพาะ-->
-							<script>
-								const tabButtons = document.querySelectorAll('.inspiration-tab');
-								const inspirationImage = document.getElementById('inspiration-display');
+						</div>
 
-								// เปลี่ยนให้แต่ละห้องมีหลายภาพ
-								const roomImages = {
-									all: ['images/inspi-all1.avif', 'images/inspi-all2.avif', 'images/inspi-all3.avif', 'images/inspi-all4.avif', 'images/inspi-all5.avif', 'images/inspi-all6.avif'],
-									bedroom: ['images/inspi-bed1.avif', 'images/inspi-bed2.avif', 'images/inspi-bed3.avif', 'images/inspi-bed4.avif', 'images/inspi-bed5.webp', 'images/inspi-bed6.avif'],
-									kid: ['images/inspi-kid1.avif', 'images/inspi-kid2.avif', 'images/inspi-kid3.avif', 'images/inspi-kid4.avif', 'images/inspi-kid5.avif', 'images/inspi-kid6.avif'],
-									living: ['images/inspi-liv1.avif', 'images/inspi-liv2.webp', 'images/inspi-liv3.avif', 'images/inspi-liv4.avif', 'images/inspi-liv5.avif', 'images/inspi-liv6.avif'],
-									kitchen: ['images/inspi-kit1.avif', 'images/inspi-kit2.avif', 'images/inspi-kit3.avif', 'images/inspi-kit4.avif', 'images/inspi-kit5.avif', 'images/inspi-kit6.avif'],
-									work: ['images/inspi-work1.avif', 'images/inspi-work2.avif', 'images/inspi-work3.avif', 'images/inspi-work4.avif', 'images/inspi-work5.avif', 'images/inspi-work6.avif'],
-									game: ['images/inspi-gam1.avif', 'images/inspi-gam3.avif', 'images/inspi-gam2.avif', 'images/inspi-gam4.avif', 'images/inspi-gam5.avif', 'images/inspi-gam6.avif']
-								};
+						<!-- Section 3: Ideas & Inspirations -->
+						<div class="inspiration" id="inspiration">
+							<div class="tabs">
+								<h2 class="mb-4">ไอเดีย & แรงบันดาลใจเพิ่มเติม</h2>
+								<div class="mb-4 d-flex gap-3">
+									<button class="btn btn-outline-secondary inspiration-tab active"
+										data-room="all">ทั้งหมด</button>
+									<button class="btn btn-outline-secondary inspiration-tab"
+										data-room="bedroom">ห้องนอน</button>
+									<button class="btn btn-outline-secondary inspiration-tab"
+										data-room="kid">ห้องเด็ก</button>
+									<button class="btn btn-outline-secondary inspiration-tab"
+										data-room="living">ห้องนั่งเล่น</button>
+									<button class="btn btn-outline-secondary inspiration-tab"
+										data-room="kitchen">ห้องครัว</button>
+									<button class="btn btn-outline-secondary inspiration-tab"
+										data-room="work">ห้องทำงาน</button>
+									<button class="btn btn-outline-secondary inspiration-tab"
+										data-room="game">ห้องเล่นเกม</button>
+								</div>
 
-								function showImages(room) {
-									const imagesHTML = roomImages[room].map(img =>
-										`<img src="${img}" class="img-fluid rounded shadow" alt="${room}">`
-									).join('');
-									inspirationImage.innerHTML = imagesHTML;
-								}
+								<div id="inspiration-display">
+									<!-- รูปภาพจะแสดงที่นี่ -->
+								</div>
 
-								tabButtons.forEach(button => {
-									button.addEventListener('click', () => {
-										tabButtons.forEach(btn => btn.classList.remove('active'));
-										button.classList.add('active');
-										const room = button.getAttribute('data-room');
-										showImages(room);
+								<!--CSS ของ Section 3 โดยเพราะ-->
+								<style>
+									#inspiration-display {
+										column-count: 3;
+										column-gap: 16px;
+									}
+
+									#inspiration-display img {
+										width: 100%;
+										margin-bottom: 16px;
+										border-radius: 12px;
+										box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+										break-inside: avoid;
+									}
+
+									#inspiration-display img {
+										transition: all 0.3s ease-in-out;
+									}
+
+
+									@media (max-width: 768px) {
+										#inspiration-display {
+											column-count: 2;
+										}
+									}
+
+									@media (max-width: 480px) {
+										#inspiration-display {
+											column-count: 1;
+										}
+									}
+								</style>
+
+								<!--script ของ Section 3 โดยเฉพาะ-->
+								<script>
+									const tabButtons = document.querySelectorAll('.inspiration-tab');
+									const inspirationImage = document.getElementById('inspiration-display');
+
+									// เปลี่ยนให้แต่ละห้องมีหลายภาพ
+									const roomImages = {
+										all: ['images/inspi-all1.avif', 'images/inspi-all2.avif', 'images/inspi-all3.avif', 'images/inspi-all4.avif', 'images/inspi-all5.avif', 'images/inspi-all6.avif'],
+										bedroom: ['images/inspi-bed1.avif', 'images/inspi-bed2.avif', 'images/inspi-bed3.avif', 'images/inspi-bed4.avif', 'images/inspi-bed5.webp', 'images/inspi-bed6.avif'],
+										kid: ['images/inspi-kid1.avif', 'images/inspi-kid2.avif', 'images/inspi-kid3.avif', 'images/inspi-kid4.avif', 'images/inspi-kid5.avif', 'images/inspi-kid6.avif'],
+										living: ['images/inspi-liv1.avif', 'images/inspi-liv2.webp', 'images/inspi-liv3.avif', 'images/inspi-liv4.avif', 'images/inspi-liv5.avif', 'images/inspi-liv6.avif'],
+										kitchen: ['images/inspi-kit1.avif', 'images/inspi-kit2.avif', 'images/inspi-kit3.avif', 'images/inspi-kit4.avif', 'images/inspi-kit5.avif', 'images/inspi-kit6.avif'],
+										work: ['images/inspi-work1.avif', 'images/inspi-work2.avif', 'images/inspi-work3.avif', 'images/inspi-work4.avif', 'images/inspi-work5.avif', 'images/inspi-work6.avif'],
+										game: ['images/inspi-gam1.avif', 'images/inspi-gam3.avif', 'images/inspi-gam2.avif', 'images/inspi-gam4.avif', 'images/inspi-gam5.avif', 'images/inspi-gam6.avif']
+									};
+
+									function showImages(room) {
+										const imagesHTML = roomImages[room].map(img =>
+											`<img src="${img}" class="img-fluid rounded shadow" alt="${room}">`
+										).join('');
+										inspirationImage.innerHTML = imagesHTML;
+									}
+
+									tabButtons.forEach(button => {
+										button.addEventListener('click', () => {
+											tabButtons.forEach(btn => btn.classList.remove('active'));
+											button.classList.add('active');
+											const room = button.getAttribute('data-room');
+											showImages(room);
+										});
 									});
-								});
 
-								// แสดงภาพหมวด "ทั้งหมด" ทันทีเมื่อโหลดหน้าเว็บ
-								window.addEventListener('DOMContentLoaded', () => {
-									showImages('all');
-								});
+									// แสดงภาพหมวด "ทั้งหมด" ทันทีเมื่อโหลดหน้าเว็บ
+									window.addEventListener('DOMContentLoaded', () => {
+										showImages('all');
+									});
 
-							</script>
+								</script>
 
+							</div>
+							<div class="inspiration-content">
+								<!-- เปลี่ยนรูปภาพตามแท็บ -->
+							</div>
 						</div>
-						<div class="inspiration-content">
-							<!-- เปลี่ยนรูปภาพตามแท็บ -->
+
+						<!-- Product Grid -->
+						<div class="product-grid">
+							<!-- เติมสินค้าแบบ dynamic -->
 						</div>
-					</div>
 
-					<!-- Product Grid -->
-					<div class="product-grid">
-						<!-- เติมสินค้าแบบ dynamic -->
-					</div>
-				</section>
+					</section>
 
-			</div>
+
+				</div>
 		</section>
 	</div>
 
@@ -578,9 +748,35 @@
 	<script>
 		const API_BASE = 'http://localhost:3000/api/product';
 
-
-
 		//เพิ่มสินค้า
+		fetch("http://localhost:3000/api/products")
+			.then((res) => res.json())
+			.then((products) => {
+				const container = document.getElementById("product-container");
+				container.innerHTML = ""; // ล้างก่อนแสดง
+
+				products.forEach(product => {
+					const card = document.createElement("div");
+					card.className = "bg-white rounded-lg shadow p-4 hover:shadow-lg transition-all";
+
+					card.innerHTML = `
+          <a href="product.html?id=${product.id}">
+            <img src="${product.image_url}" alt="${product.name}" class="w-full h-48 object-cover rounded-md mb-2">
+          </a>
+          <h5 class="text-lg font-semibold">
+            <a href="product.html?id=${product.id}" class="hover:underline">
+              ${product.name}
+            </a>
+          </h5>
+          <p class="text-yellow-700 font-bold mb-2">฿${product.price.toFixed(2)}</p>
+          <button onclick="addToCart(${product.id})" class="bg-yellow-600 text-white py-1 px-3 rounded hover:bg-yellow-700">
+            + ใส่ตะกร้า
+          </button>
+        `;
+					container.appendChild(card);
+				});
+			});
+
 		function addToCart(productId) {
 			fetch('http://localhost:3000/api/cart', {
 				method: 'POST',
@@ -621,12 +817,24 @@
 		let isLoading = false;
 
 		function filterCategory(category) {
+			const notFoundMsg = document.getElementById('searchNotFound');
+
+			// เมื่อกดเลือกหมวดสินค้า ให้ซ่อนคำเตือนทันที
+			notFoundMsg.classList.add('hidden');
+
 			if (isLoading) return; // ป้องกันกดซ้ำ
 			isLoading = true;
 
 			fetch(`http://localhost:3000/api/products?category=${encodeURIComponent(category)}`)
 				.then(res => res.json())
 				.then(products => {
+
+					// 👇 ซ่อนผลลัพธ์จากการค้นหา
+					document.getElementById('search-results').style.display = 'none';
+					// 👇 แสดงรายการสินค้าปกติ
+					document.getElementById('product-list').style.display = 'flex'; // หรือ block
+
+
 					const container = document.getElementById('product-list');
 					container.innerHTML = '';
 
@@ -638,14 +846,15 @@
 					products.forEach(product => {
 						const productHTML = `
 					<div class="col-12 col-md-4 col-lg-3 mb-4">
-						<div class="product-item text-center">
-							<img src="${product.image_url}" alt="${product.name}" class="img-fluid mb-3" style="height:200px; object-fit:cover;">
-							<h5>${product.name}</h5>
-							<p class="text-muted">${product.description}</p>
-							<p><strong>฿${product.price.toFixed(2)}</strong></p>
-							<button class="btn btn-outline-primary" onclick="addToCart(${product.id})">+ เพิ่มใส่ตะกร้า</button>
-						</div>
-					</div>`;
+    <div class="product-item text-center">
+      <a href="product.html?id=${product.id}">
+        <img src="${product.image_url}" alt="${product.name}" class="img-fluid mb-3" style="height:200px; object-fit:cover;">
+        <h5>${product.name}</h5>
+        <p class="text-muted">${product.description}</p>
+        <p><strong>฿${product.price.toFixed(2)}</strong></p>
+      </a>
+    </div>
+  </div>`;
 						container.insertAdjacentHTML('beforeend', productHTML);
 					});
 				})
@@ -677,29 +886,32 @@
 			});
 		}
 
-		document.addEventListener("DOMContentLoaded", () => {
-			loadCategoryRepresentatives(); // ✅ โหลดแค่ตัวแทนสินค้า
+		document.addEventListener('DOMContentLoaded', () => {
+			fetch('http://localhost:3000/api/products/representatives')
+				.then(res => res.json())
+				.then(products => {
+					const container = document.getElementById('category-section');
+					container.innerHTML = ''; // ล้างของเดิมก่อน
 
+					products.forEach(product => {
+						const card = document.createElement('div');
+						card.className = 'category-card';
+						card.innerHTML = `
+            <img src="${product.image_url}" alt="${product.name}" class="category-image" />
+            <h3 class="category-name">${product.category}</h3>
+          `;
 
-			const tabs = document.querySelectorAll('.category-tab');
+						// คลิกแล้วไปกรองสินค้าเฉพาะหมวดนั้น
+						card.addEventListener('click', () => {
+							window.location.href = `shop.html?category=${encodeURIComponent(product.category)}`;
+						});
 
-			tabs.forEach(tab => {
-				tab.addEventListener('click', () => {
-					// เปลี่ยน tab active
-					tabs.forEach(t => t.classList.remove('active'));
-					tab.classList.add('active');
-
-					// ดึง category จาก data-category
-					const category = tab.getAttribute('data-category');
-
-					// โหลดสินค้าใหม่ตาม category จาก API
-					if (category === 'all') {
-						loadCategoryRepresentatives(); // หรือ loadProducts() เพื่อโหลดสินค้าทั้งหมด
-					} else {
-						filterCategory(category);
-					}
+						container.appendChild(card);
+					});
+				})
+				.catch(err => {
+					console.error('เกิดข้อผิดพลาดในการโหลดข้อมูล:', err);
 				});
-			});
 		});
 
 		// ฟังก์ชันกรองสินค้าตามหมวด Product category
@@ -721,14 +933,15 @@
 			const input = document.getElementById('searchInput').value.trim();
 			const notFoundMsg = document.getElementById('searchNotFound');
 			const productList = document.getElementById('search-results');
+			const normalProductList = document.getElementById('product-list'); // 👈 ตัวแสดงสินค้าปกติ
+
 			productList.innerHTML = ''; // ล้างผลลัพธ์เก่า
 			notFoundMsg.classList.add('hidden');
+			normalProductList.innerHTML = ''; // 👈 ล้างสินค้าทั่วไป
+			normalProductList.style.display = 'none'; // 👈 ซ่อนสินค้าปกติ
+			productList.style.display = 'flex'; // 👈 แสดงผลการค้นหา
 
-			if (!input) {
-				notFoundMsg.textContent = "กรุณากรอกคำค้นหา";
-				notFoundMsg.classList.remove('hidden');
-				return;
-			}
+
 
 			try {
 				const res = await fetch(`http://localhost:3000/api/products/search?q=${encodeURIComponent(input)}`);
@@ -744,23 +957,34 @@
 					return;
 				}
 
-				products.forEach(p => {
-					const div = document.createElement('div');
-					div.classList.add('product-item', 'border', 'p-4', 'rounded');
-					div.innerHTML = `
-        <img src="${p.image_url}" alt="${p.name}" class="w-full h-40 object-cover mb-2" />
-        <h3 class="font-semibold">${p.name}</h3>
-        <p class="text-gray-600">${p.description}</p>
-        <p class="mt-1 font-bold">฿${p.price.toFixed(2)}</p>
-      `;
-					productList.appendChild(div);
+				products.forEach(product => {
+					const productHTML = `
+        <div class="col-12 col-md-4 col-lg-3 mb-4">
+          <div class="product-item text-center">
+            <a href="product.html?id=${product.id}">
+              <img src="${product.image_url}" alt="${product.name}" class="img-fluid mb-3" style="height:200px; object-fit:cover;">
+              <h5>${product.name}</h5>
+              <p class="text-muted">${product.description}</p>
+              <p><strong>฿${product.price.toFixed(2)}</strong></p>
+            </a>
+          </div>
+        </div>`;
+					productList.insertAdjacentHTML('beforeend', productHTML);
 				});
 			} catch (error) {
 				console.error(error);
-				notFoundMsg.textContent = "เกิดข้อผิดพลาดในการค้นหา";
 				notFoundMsg.classList.remove('hidden');
 			}
+
 		}
+
+		let debounceTimer;
+		document.getElementById('searchInput').addEventListener('input', () => {
+			clearTimeout(debounceTimer);
+			debounceTimer = setTimeout(() => {
+				searchProducts();
+			}, 300);
+		});
 
 
 		// ฟังก์ชัน scroll ไปยัง section หมวดห้อง
@@ -775,6 +999,27 @@
 			}
 		}
 
+		function showTab(tabName) {
+			const tabProducts = document.getElementById("tab-products");
+			const tabRooms = document.getElementById("tab-rooms");
+			const buttons = document.querySelectorAll(".shop-tab");
+
+			// ซ่อนทุกแท็บ
+			tabProducts.classList.add("hidden");
+			tabRooms.classList.add("hidden");
+
+			// เอา .active-tab ออกจากทุกปุ่ม
+			buttons.forEach(btn => btn.classList.remove("active-tab"));
+
+			// แสดงแท็บที่เลือก + เพิ่มคลาส active ให้ปุ่มนั้น
+			if (tabName === "products") {
+				tabProducts.classList.remove("hidden");
+				buttons[0].classList.add("active-tab");
+			} else if (tabName === "rooms") {
+				tabRooms.classList.remove("hidden");
+				buttons[1].classList.add("active-tab");
+			}
+		}
 	</script>
 
 </body>
