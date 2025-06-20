@@ -35,21 +35,21 @@ db.serialize(() => {
     ('Kruzo Aero Chair', 'Comfortable design', 78.00, 'images/product-2.png', 'เก้าอี้'),
     ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/product-3.png', 'เก้าอี้'),
 
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa1.avif', 'โซฟา'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa2.avif', 'โซฟา'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa3.avif', 'โซฟา'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa4.avif', 'โซฟา'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa5.avif', 'โซฟา'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa1.png', 'โซฟา'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa2.png', 'โซฟา'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa3.png', 'โซฟา'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa4.png', 'โซฟา'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/sofa5.png', 'โซฟา'),
 
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed1.avif', 'เตียงนอน'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed2.avif', 'เตียงนอน'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed4.avif', 'เตียงนอน'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed3.avif', 'เตียงนอน'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed6.avif', 'เตียงนอน'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed5.avif', 'เตียงนอน'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed1.png', 'เตียงนอน'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed2.png', 'เตียงนอน'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed4.png', 'เตียงนอน'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed3.png', 'เตียงนอน'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed6.png', 'เตียงนอน'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/bed5.png', 'เตียงนอน'),
 
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/desk1.avif', 'โต๊ะ'),
-    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/desk2.avif', 'โต๊ะ')
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/desk1.png', 'โต๊ะ'),
+    ('Ergonomic Chair', 'Work-friendly chair', 43.00, 'images/desk2.png', 'โต๊ะ')
 
   `);
 
