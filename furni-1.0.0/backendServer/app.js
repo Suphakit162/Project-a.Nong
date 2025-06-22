@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const app = express();
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/ecommerce.db');
+
 
 const productRoutes = require('./routes/products');
 const cartRoutes = require('./routes/cart');
@@ -14,17 +14,18 @@ const helmet = require('helmet');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "'unsafe-inline'", "https:"],
+    fontSrc: ["'self'", "https:", "data:"],
     styleSrc: ["'self'", "'unsafe-inline'", "https:"],
-    fontSrc: ["'self'", "https:"],
     imgSrc: ["'self'", "data:", "https:"],
-    connectSrc: ["'self'", "http://localhost:3000"],
+    scriptSrc: ["'self'", "'unsafe-inline'", "https:"],
+    connectSrc: ["'self'", "http://localhost:3000"]
   }
 }));
+app.use(express.static(path.resolve(__dirname, '../furni-1.0.0')));
+
 
 //เสิร์ฟทุกไฟล์ static (เช่น index.html, login.html) จากโฟลเดอร์ furni-1.0.0
 app.use(express.static(path.join(__dirname, '..')));
@@ -35,7 +36,8 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/orders', ordersRoutes);
 app.use('/api/register', registerData);
 app.use('/api/login', loginData);
-app.use('/images', express.static('images'));
+app.use('/images', express.static(path.join(__dirname, '..', 'images')));
+
 
 
 const PORT = 3000;

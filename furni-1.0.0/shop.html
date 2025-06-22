@@ -117,7 +117,6 @@
 							border-color: #000;
 							font-weight: bold;
 						}
-
 					</style>
 
 
@@ -150,29 +149,31 @@
 												<img src="images/procat-bed.png" alt="เตียงนอน">
 												<span>เตียงนอน</span>
 											</div>
-											<div class="category-tab" data-category="decor">
+											<div class="category-tab" onclick="filterCategory('ชั้นวางของ', true)">
+												<img src="images/procat-shelf.avif" alt="ชั้นวางของ">
+												<span>ชั้นวางของ</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('ตู้เสื้อผ้า', true)">
+												<img src="images/procat-closet.webp" alt="ตู้เสื้อผ้า">
+												<span>ตู้เสื้อผ้า</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('โต๊ะหน้าทีวี', true)">
+												<img src="images/procat-TVdesk.avif" alt="โต๊ะหน้าทีวี">
+												<span>โต๊ะหน้าทีวี</span>
+											</div>
+											<div class="category-tab"
+												onclick="filterCategory('สินค้าสำหรับห้องครัว', true)">
+												<img src="images/procat-kitSet.avif" alt="สินค้าสำหรับห้องครัว">
+												<span>สินค้าสำหรับห้องครัว</span>
+											</div>
+											<div class="category-tab"
+												onclick="filterCategory('สินค้าสำหรับห้องน้ำ', true)">
+												<img src="images/procate-toilet.avif" alt="สินค้าสำหรับห้องน้ำ">
+												<span>สินค้าสำหรับห้องน้ำ</span>
+											</div>
+											<div class="category-tab" onclick="filterCategory('ของตกแต่ง', true)">
 												<img src="images/procat-decco.avif" alt="ของตกแต่ง">
 												<span>ของตกแต่ง</span>
-											</div>
-											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
-												<img src="images/procat-bed.avif" alt="เตียงนอน">
-												<span>เตียงนอน</span>
-											</div>
-											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
-												<img src="images/procat-bed.avif" alt="เตียงนอน">
-												<span>เตียงนอน</span>
-											</div>
-											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
-												<img src="images/procat-bed.avif" alt="เตียงนอน">
-												<span>เตียงนอน</span>
-											</div>
-											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
-												<img src="images/procat-bed.avif" alt="เตียงนอน">
-												<span>เตียงนอน</span>
-											</div>
-											<div class="category-tab" onclick="filterCategory('เตียงนอน', true)">
-												<img src="images/procat-bed.avif" alt="เตียงนอน">
-												<span>เตียงนอน</span>
 											</div>
 											<!-- เพิ่มตามต้องการ -->
 
@@ -487,7 +488,9 @@
 								</div>
 							</div>
 							<style>
-								h2 {padding-top: 1.5rem;}
+								h2 {
+									padding-top: 1.5rem;
+								}
 
 								.card-body {
 									min-height: 200px;
@@ -760,11 +763,11 @@
 					card.className = "bg-white rounded-lg shadow p-4 hover:shadow-lg transition-all";
 
 					card.innerHTML = `
-          <a href="product.html?id=${product.id}">
+          <a href="products.html?id=${product.id}">
             <img src="${product.image_url}" alt="${product.name}" class="w-full h-48 object-cover rounded-md mb-2">
           </a>
           <h5 class="text-lg font-semibold">
-            <a href="product.html?id=${product.id}" class="hover:underline">
+            <a href="products.html?id=${product.id}" class="hover:underline">
               ${product.name}
             </a>
           </h5>
@@ -822,6 +825,7 @@
 			// เมื่อกดเลือกหมวดสินค้า ให้ซ่อนคำเตือนทันที
 			notFoundMsg.classList.add('hidden');
 
+
 			if (isLoading) return; // ป้องกันกดซ้ำ
 			isLoading = true;
 
@@ -836,7 +840,13 @@
 
 
 					const container = document.getElementById('product-list');
-					container.innerHTML = '';
+					if (container) {
+						container.innerHTML = '';
+						// ทำต่อ...
+					} else {
+						console.warn("ไม่พบ product-list ใน DOM");
+					}
+
 
 					if (products.length === 0) {
 						container.innerHTML = '<p class="text-center">ไม่พบสินค้าในหมวดนี้</p>';
@@ -847,7 +857,7 @@
 						const productHTML = `
 					<div class="col-12 col-md-4 col-lg-3 mb-4">
     <div class="product-item text-center">
-      <a href="product.html?id=${product.id}">
+      <a href="products.html?id=${product.id}">
         <img src="${product.image_url}" alt="${product.name}" class="img-fluid mb-3" style="height:200px; object-fit:cover;">
         <h5>${product.name}</h5>
         <p class="text-muted">${product.description}</p>
@@ -961,7 +971,7 @@
 					const productHTML = `
         <div class="col-12 col-md-4 col-lg-3 mb-4">
           <div class="product-item text-center">
-            <a href="product.html?id=${product.id}">
+            <a href="products.html?id=${product.id}">
               <img src="${product.image_url}" alt="${product.name}" class="img-fluid mb-3" style="height:200px; object-fit:cover;">
               <h5>${product.name}</h5>
               <p class="text-muted">${product.description}</p>

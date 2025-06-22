@@ -61,33 +61,36 @@ router.get('/search', (req, res) => {
 });
 
 
-// ✅ ดึงสินค้าทั้งหมด
-router.get('/', (req, res) => {
-  db.all("SELECT * FROM products", [], (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json(rows);
-  });
-});
+// // ✅ ดึงสินค้าทั้งหมด
+// router.get('/', (req, res) => {
+//   db.all("SELECT * FROM products", [], (err, rows) => {
+//     if (err) {
+//       res.status(500).json({ error: err.message });
+//       return;
+//     }
+//     res.json(rows);
+//   });
+// });
 
 // GET /api/products/:id - ดึงข้อมูลสินค้าเฉพาะชิ้น
 router.get('/:id', (req, res) => {
   const id = req.params.id;
-  db.get("SELECT * FROM products WHERE id = ?", [id], (err, row) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else if (!row) {
-      res.status(404).json({ error: "Product not found" });
-    } else {
-      res.json(row);
-    }
+
+  const productQuery = `SELECT * FROM products WHERE id = ?`;
+  const imagesQuery = `SELECT image_url FROM product_images WHERE product_id = ?`;
+
+  db.get(productQuery, [id], (err, product) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (!product) return res.status(404).json({ error: "Product not found" });
+
+    db.all(imagesQuery, [id], (err, images) => {
+      if (err) return res.status(500).json({ error: err.message });
+
+      product.images = images.map(img => img.image_url); // เพิ่ม array images ให้ response
+      res.json(product);
+    });
   });
 });
-
-
-
 
 
 
