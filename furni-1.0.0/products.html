@@ -291,23 +291,22 @@
           const mainImage = document.getElementById("mainImage");
           const thumbnailsContainer = document.getElementById("thumbnailsContainer");
 
-          if (product.images && product.images.length > 0) {
-            mainImage.src = `http://localhost:3000/${product.images[0]}`;
+        if (product.image_url) {
+          const fullUrl = `http://localhost:3000/${product.image_url}`;
+          mainImage.src = fullUrl;
 
-            thumbnailsContainer.innerHTML = ''; // ล้าง thumbnail เดิม
+          thumbnailsContainer.innerHTML = ''; // ล้าง thumbnail เดิม
 
-            product.images.forEach(imgUrl => {
-              const fullUrl = `http://localhost:3000/${imgUrl}`;
-              const img = document.createElement("img");
-              img.src = fullUrl;
-              img.alt = product.name;
-              img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
-              img.addEventListener("click", () => {
-                mainImage.src = fullUrl;
-              });
-              thumbnailsContainer.appendChild(img);
-            });
-          }
+          const img = document.createElement("img");
+          img.src = fullUrl;
+          img.alt = product.name;
+          img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
+          img.addEventListener("click", () => {
+            mainImage.src = fullUrl;
+          });
+          thumbnailsContainer.appendChild(img);
+        }
+
 
 
           // ✅ ดาว (mock เป็น 4 ดาวไว้ก่อน ถ้ายังไม่มีใน DB)

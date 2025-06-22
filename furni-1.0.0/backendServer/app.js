@@ -12,6 +12,8 @@ const registerData = require('./data/register');
 const loginData = require('./data/login');
 const helmet = require('helmet');
 
+const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use(helmet.contentSecurityPolicy({
