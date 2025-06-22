@@ -3,7 +3,7 @@ function redirectToLogin(event) {
   event.preventDefault(); // หยุดไม่ให้ลิงก์ทำงานตาม href
 
   const currentPath = window.location.pathname + window.location.search + window.location.hash;
-  const loginUrl = `/SignLogin/login-page.html?redirect=${encodeURIComponent(currentPath)}`;
+  const loginUrl = `/furni-1.0.0/SignLogin/login-page.html?redirect=${encodeURIComponent(currentPath)}`;
   
   console.log('Redirecting to login URL:', loginUrl);
   window.location.href = loginUrl;
@@ -45,11 +45,13 @@ function loginSubmit() {
   .then(data => {
     alert(data.message);
     if (data.message === 'Login successfully.') {
+      localStorage.setItem('role', data.user.role);
+      localStorage.setItem('email', data.user.email);
       // อ่านค่า redirect จาก URL เพื่อไปหน้าเดิมที่มาก่อนล็อกอิน
       const redirectUrl = getRedirectUrl();
       console.log('Redirecting to:', redirectUrl);
       // Redirect กลับไปหน้าเดิม
-      window.location.href = redirectUrl;  // <-- แก้ไขตรงนี้
+      window.location.href = redirectUrl;
     }
   })
   .catch(error => {
