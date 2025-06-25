@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
     }
 
     // เพิ่ม user ใหม่
-    users.push({ firstName, lastName, email, address, password });
+    users.push({ firstName, lastName, email, address, password , role: 'user' });
 
     // เขียนกลับไฟล์
     fs.writeFile(filePath, JSON.stringify(users, null, 2), err => {

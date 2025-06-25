@@ -77,6 +77,8 @@
 	</div>
 	<!-- End Hero Section -->
 
+	
+
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row mb-5">
@@ -396,7 +398,7 @@
 			<!-- </form> -->
 		</div>
 	</div>
-
+<button onclick="logout()" class="btn btn-danger">Logout</button>
 	<!-- Start Footer Section -->
 	<footer class="footer-section">
 		<div class="container relative">
@@ -510,6 +512,7 @@
 	<!-- End Footer Section -->
 
 
+
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/tiny-slider.js"></script>
 	<script src="js/custom.js"></script>
@@ -573,6 +576,22 @@
 					}
 				});
 		}
+		//logout
+		function logout() {
+    if (!window.cartItems || window.cartItems.length === 0) {
+      performLogout();
+    } else {
+      const confirmLogout = confirm("คุณยังมีสินค้าที่ยังไม่ได้สั่งซื้อ ต้องการออกจากระบบจริงหรือไม่?");
+      if (confirmLogout) {
+        performLogout();
+      }
+    }
+  }
+
+  function performLogout() {
+    localStorage.removeItem('authToken');
+    window.location.href = "./SignLogin/login-page.html";
+  }
 	</script>
 
 	<script src="/SignLogin/login-page.js"></script>

@@ -13,6 +13,16 @@
   </style>
 </head>
 <body>
+
+  <script>
+    // ถ้า role ไม่ใช่ admin ให้ redirect ออก
+    const role = localStorage.getItem('role');
+    if (role !== 'admin') {
+      alert('คุณไม่มีสิทธิ์เข้าถึงหน้านี้');
+      window.location.href = '/index.html'; // หรือจะใช้ '/' ก็ได้
+    }
+  </script>
+  
   <h1>Admin Panel</h1>
 
   <h2>เพิ่มสินค้าใหม่</h2>
