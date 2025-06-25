@@ -292,7 +292,6 @@
           const thumbnailsContainer = document.getElementById("thumbnailsContainer");
 
 
-          if (product.image_url) {
 
         if (product.image_url) {
 
@@ -313,15 +312,7 @@
         }
 
 
-          const img = document.createElement("img");
-          img.src = fullUrl;
-          img.alt = product.name;
-          img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
-          img.addEventListener("click", () => {
-            mainImage.src = fullUrl;
-          });
-          thumbnailsContainer.appendChild(img);
-        }
+          
 
 
 

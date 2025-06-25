@@ -12,6 +12,7 @@
     "lastName": "De Bruyne",
     "email": "Bruyne17@UK.King",
     "address": "Norwich, 1191/100 England",
-    "password": "kdb17"
+    "password": "kdb17",
+    "role": "admin"
   }
 ]
