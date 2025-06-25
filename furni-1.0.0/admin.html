@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - จัดการสินค้า</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
+    form input { margin-bottom: 10px; width: 100%; padding: 5px; }
+    button { padding: 5px 10px; }
+    img { max-width: 60px; height: auto; }
+  </style>
+</head>
+<body>
+
+  <script>
+    // ถ้า role ไม่ใช่ admin ให้ redirect ออก
+    const role = localStorage.getItem('role');
+    if (role !== 'admin') {
+      alert('คุณไม่มีสิทธิ์เข้าถึงหน้านี้');
+      window.location.href = '/index.html'; // หรือจะใช้ '/' ก็ได้
+    }
+  </script>
+  
+  <h1>Admin Panel</h1>
+
+  <h2>เพิ่มสินค้าใหม่</h2>
+  <form id="product-form">
+    <input name="name" placeholder="ชื่อสินค้า" required>
+    <input name="description" placeholder="รายละเอียด">
+    <input name="price" type="number" placeholder="ราคา" required>
+    <input name="image_url" placeholder="URL รูปภาพ" required>
+    <input name="category" placeholder="หมวดหมู่ (เช่น เก้าอี้, เตียง)">
+    <button type="submit" id="submit-button">เพิ่มสินค้า</button>
+  </form>
+
+  <h2>รายการสินค้า</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ชื่อ</th>
+        <th>รายละเอียด</th>
+        <th>ราคา</th>
+        <th>รูปภาพ</th>
+        <th>หมวดหมู่</th>
+        <th>จัดการ</th>
+      </tr>
+    </thead>
+    <tbody id="product-table"></tbody>
+  </table>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

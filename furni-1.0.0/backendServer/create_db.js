@@ -30,7 +30,7 @@ db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS product_images (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     product_id INTEGER,
-    image_url TEXT,
+    image_urls TEXT,
     FOREIGN KEY (product_id) REFERENCES products(id)
   )`);
 

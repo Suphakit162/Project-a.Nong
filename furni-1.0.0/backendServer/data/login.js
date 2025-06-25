@@ -1,3 +1,4 @@
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -25,7 +26,13 @@ router.post('/', (req, res) => {
     const user = users.find(user => user.email === username && user.password === password);
 
     if (user) {
-      return res.json({ message: 'Login successfully.' });
+      return res.json({
+        message: 'Login successfully.',
+        user: {
+          email: user.email,
+          role: user.role || 'user' // ถ้าไม่มีระบุไว้ ให้เป็น 'user'
+        }
+      });
     } else {
       return res.status(400).json({ message: 'Incorrect email or password' });
     }
