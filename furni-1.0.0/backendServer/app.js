@@ -1,9 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+<<<<<<< HEAD
 const app = express();
 
 
+=======
+>>>>>>> bbe1d703959b6dd6be517a3c43f8c94dcd5a602e
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/ecommerce.db');
 
@@ -14,6 +17,8 @@ const ordersRoutes = require('./routes/orders');
 const registerData = require('./data/register');
 const loginData = require('./data/login');
 const helmet = require('helmet');
+
+const app = express();
 
 app.use(cors());
 app.use(express.json());
