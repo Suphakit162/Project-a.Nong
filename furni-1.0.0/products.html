@@ -291,27 +291,16 @@
           const mainImage = document.getElementById("mainImage");
           const thumbnailsContainer = document.getElementById("thumbnailsContainer");
 
-<<<<<<< HEAD
+
           if (product.image_url) {
-=======
+
         if (product.image_url) {
->>>>>>> bbe1d703959b6dd6be517a3c43f8c94dcd5a602e
+
           const fullUrl = `http://localhost:3000/${product.image_url}`;
           mainImage.src = fullUrl;
 
           thumbnailsContainer.innerHTML = ''; // ล้าง thumbnail เดิม
-<<<<<<< HEAD
 
-          const img = document.createElement("img");
-          img.src = fullUrl;
-          img.alt = product.name;
-          img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
-          img.addEventListener("click", () => {
-            mainImage.src = fullUrl;
-          });
-          thumbnailsContainer.appendChild(img);
-        }
-=======
 
           const img = document.createElement("img");
           img.src = fullUrl;
@@ -323,7 +312,18 @@
           thumbnailsContainer.appendChild(img);
         }
 
->>>>>>> bbe1d703959b6dd6be517a3c43f8c94dcd5a602e
+
+          const img = document.createElement("img");
+          img.src = fullUrl;
+          img.alt = product.name;
+          img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
+          img.addEventListener("click", () => {
+            mainImage.src = fullUrl;
+          });
+          thumbnailsContainer.appendChild(img);
+        }
+
+
 
 
           // ✅ ดาว (mock เป็น 4 ดาวไว้ก่อน ถ้ายังไม่มีใน DB)

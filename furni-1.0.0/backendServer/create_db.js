@@ -1,12 +1,13 @@
 const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs');
 const dbFolder = './db';
+const db = new sqlite3.Database('./db/ecommerce.db');
 
 if (!fs.existsSync(dbFolder)) {
   fs.mkdirSync(dbFolder);
 }
 
-const db = new sqlite3.Database('./db/ecommerce.db');
+
 
 db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS products (
@@ -30,7 +31,7 @@ db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS product_images (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     product_id INTEGER,
-    image_urls TEXT,
+    image_url TEXT,
     FOREIGN KEY (product_id) REFERENCES products(id)
   )`);
 
