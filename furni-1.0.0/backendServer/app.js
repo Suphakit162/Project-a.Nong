@@ -30,7 +30,7 @@ app.use(express.static(path.resolve(__dirname, '../furni-1.0.0')));
 
 
 //เสิร์ฟทุกไฟล์ static (เช่น index.html, login.html) จากโฟลเดอร์ furni-1.0.0
-app.use(express.static(path.join(__dirname, '..')));
+
 console.log('Static root folder is:', path.join(__dirname, '..'));
 
 app.use('/api/products', productRoutes);

@@ -3,6 +3,7 @@ function redirectToLogin(event) {
   event.preventDefault(); // หยุดไม่ให้ลิงก์ทำงานตาม href
 
   const currentPath = window.location.pathname + window.location.search + window.location.hash;
+  console.log(currentPath);
   const loginUrl = `/furni-1.0.0/SignLogin/login-page.html?redirect=${encodeURIComponent(currentPath)}`;
   
   console.log('Redirecting to login URL:', loginUrl);
