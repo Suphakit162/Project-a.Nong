@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3').verbose(); // ✅ แก้ตรงนี้
 const db = new sqlite3.Database('./db/ecommerce.db');
 
 

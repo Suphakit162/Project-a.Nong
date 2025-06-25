@@ -291,11 +291,16 @@
           const mainImage = document.getElementById("mainImage");
           const thumbnailsContainer = document.getElementById("thumbnailsContainer");
 
+
+          if (product.image_url) {
+
         if (product.image_url) {
+
           const fullUrl = `http://localhost:3000/${product.image_url}`;
           mainImage.src = fullUrl;
 
           thumbnailsContainer.innerHTML = ''; // ล้าง thumbnail เดิม
+
 
           const img = document.createElement("img");
           img.src = fullUrl;
@@ -306,6 +311,18 @@
           });
           thumbnailsContainer.appendChild(img);
         }
+
+
+          const img = document.createElement("img");
+          img.src = fullUrl;
+          img.alt = product.name;
+          img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
+          img.addEventListener("click", () => {
+            mainImage.src = fullUrl;
+          });
+          thumbnailsContainer.appendChild(img);
+        }
+
 
 
 
@@ -370,8 +387,9 @@
             })
               .then(res => res.json())
               .then(data => {
-                alert("เพิ่มสินค้าลงตะกร้าแล้ว!");
                 window.location.href = 'shop.html';
+                alert("เพิ่มสินค้าลงตะกร้าแล้ว!");
+                
               })
               .catch(err => {
                 console.error("Error:", err);
