@@ -57,7 +57,11 @@ function loginSubmit() {
       const redirectUrl = getRedirectUrl();
       console.log('Redirecting to:', redirectUrl);
       // Redirect กลับไปหน้าเดิม
+    if (redirectUrl) {
       window.location.href = redirectUrl;
+    } else {
+      window.location.href = "/index.html"; // หรือหน้า default ที่คุณต้องการ
+    }
     }
   })
   .catch(error => {

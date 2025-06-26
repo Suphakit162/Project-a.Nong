@@ -334,5 +334,29 @@
     "address": "123",
     "password": "1000",
     "role": "user"
+  },
+  {
+    "firstName": "Martin",
+    "lastName": "Odegard",
+    "email": "martin49@gmail.com",
+    "address": "---",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "f",
+    "lastName": "ff",
+    "email": "ff@gmail.com",
+    "address": "---",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "k",
+    "lastName": "k",
+    "email": "k@gmail.com",
+    "address": "---",
+    "password": "1000",
+    "role": "user"
   }
 ]
