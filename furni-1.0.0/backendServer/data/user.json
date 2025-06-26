@@ -5,7 +5,7 @@
     "email": "supakita1234@gmail.com",
     "address": "111",
     "password": "123456",
-     "role": "admin"
+    "role": "admin"
   },
   {
     "firstName": "Kevin",
@@ -14,5 +14,117 @@
     "address": "Norwich, 1191/100 England",
     "password": "kdb17",
     "role": "admin"
+  },
+  {
+    "firstName": "Sunny",
+    "lastName": "Broxdee",
+    "email": "sunny@gmail.com",
+    "address": "1234/11",
+    "password": "1010",
+    "role": "user"
+  },
+  {
+    "firstName": "sam",
+    "lastName": "sy",
+    "email": "zxc@gmail.com",
+    "address": "11/2",
+    "password": "123",
+    "role": "user"
+  },
+  {
+    "firstName": "Ricardo",
+    "lastName": "Kaka",
+    "email": "kaka@gmail.com",
+    "address": "13/15 Brazil",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Frank",
+    "lastName": "Lampard",
+    "email": "lampfrank@gmail.com",
+    "address": "11/10 English",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Steven",
+    "lastName": "Gerrad",
+    "email": "stev11@gmail.com",
+    "address": "12/10 English",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Devid",
+    "lastName": "Beckham",
+    "email": "beckham49@gmail.com",
+    "address": "1500/1 English",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Pual",
+    "lastName": "Schole",
+    "email": "scle56@gmail.com",
+    "address": "2500/1",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "s",
+    "lastName": "s",
+    "email": "sss@gmail.com",
+    "address": "12/11",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "sq",
+    "lastName": "lite",
+    "email": "sqlite3@gmail.com",
+    "address": "333",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Cristiano",
+    "lastName": "Ronaldo",
+    "email": "cr7goat@gmail.com",
+    "address": "11/12",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Leonel",
+    "lastName": "Messi",
+    "email": "kingleo@gmail.com",
+    "address": "1000/2",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Fernando",
+    "lastName": "Tores",
+    "email": "tores29@gmail.com",
+    "address": "11/10",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Gg",
+    "lastName": "buffon",
+    "email": "ggbuf11@gmail.com",
+    "address": "123",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "Luis",
+    "lastName": "Suarez",
+    "email": "lssua@gmail.com",
+    "address": "111",
+    "password": "1100",
+    "role": "user"
   }
 ]

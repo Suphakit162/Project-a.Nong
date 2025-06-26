@@ -108,7 +108,8 @@
               </div>
 
               <div class="pt-1 mb-4">
-                <button class="btn-login" type="button" onclick="signinSubmit()">Register</button>
+                <!-- ปุ่มไม่ต้องใส่ onclick -->  
+                <button class="btn-login" type="submit">Register</button>
               </div>
 
               <p class="text-center">or already have an account? <a href="login-page.html" class="link-register">Log-in here!</a></p>
@@ -134,37 +135,38 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
 
   <script>
-  function signinSubmit() {
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
-    const email = document.getElementById("email").value;
-    const address = document.getElementById("address").value;
-    const password = document.getElementById("password").value;
+  document.getElementById("signin").addEventListener("submit", function (event) {
+  event.preventDefault(); // ❗ ป้องกัน reload
 
-    fetch("http://localhost:3000/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        address,
-        password
-      })
-    })
-      .then(response => response.json())
-      .then(data => {
-        alert(data.message);
-        console.log(data);
-        // จะทำ redirect หรือ reset form ได้ที่นี่
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("Something went wrong.");
-      });
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const email = document.getElementById("email").value;
+  const address = document.getElementById("address").value;
+  const password = document.getElementById("password").value;
+
+  fetch("http://localhost:3000/api/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ firstName, lastName, email, address, password })
+  })
+    .then(response => response.json())
+    .then(data => {
+      alert(data.message);
+        console.log("Server response:", data);
+    if (data.message.trim() === "Registration successful.") {
+    console.log("Redirecting now...");
+    setTimeout(() => {
+      window.location.href = "login-page.html";
+    }, 5000);
   }
+})
+
+    .catch(error => {
+      console.error("Error:", error);
+      alert("Something went wrong.");
+    });
+});
+
 </script>
 
 
