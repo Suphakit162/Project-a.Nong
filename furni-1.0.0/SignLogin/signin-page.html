@@ -125,7 +125,7 @@
       </div>
     </div>
 
-    
+    <button id="testRedirectBtn">Test Redirect</button>
   </section>
 
   <!-- Bootstrap 5 JS -->
@@ -135,38 +135,62 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
 
   <script>
-  document.getElementById("signin").addEventListener("submit", function (event) {
-  event.preventDefault(); // ❗ ป้องกัน reload
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ DOM Loaded");
 
-  const firstName = document.getElementById("firstName").value;
-  const lastName = document.getElementById("lastName").value;
-  const email = document.getElementById("email").value;
-  const address = document.getElementById("address").value;
-  const password = document.getElementById("password").value;
-
-  fetch("http://localhost:3000/api/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ firstName, lastName, email, address, password })
-  })
-    .then(response => response.json())
-    .then(data => {
-      alert(data.message);
-        console.log("Server response:", data);
-    if (data.message.trim() === "Registration successful.") {
-    console.log("Redirecting now...");
-    setTimeout(() => {
-      window.location.href = "login-page.html";
-    }, 5000);
+  const form = document.getElementById("signin");
+  if (!form) {
+    console.error("❌ Form not found");
+    return;
   }
-})
 
-    .catch(error => {
-      console.error("Error:", error);
-      alert("Something went wrong.");
-    });
+  form.addEventListener("submit", async function (event) {
+    console.log("👉 Form submitted");
+    event.preventDefault();
+
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const address = document.getElementById("address").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      const response = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, lastName, email, address, password })
+      });
+
+      console.log("✅ Raw response:", response);
+
+      const data = await response.json();
+      console.log("✅ Parsed JSON:", data);
+
+      
+
+      console.log("✔️ data.message =", data.message);
+      console.log("✔️ typeof =", typeof data.message);
+      console.log("✔️ includes 'success'? ", data.message.includes("success"));
+
+      
+      alert(data.message);
+      if (data.message.toLowerCase().includes("registration successful")) {
+        setTimeout(() => {
+          window.location.href = "login-page.html";
+        }, 10);
+      }
+
+    } catch (err) {
+      console.error("❌ Error during registration:", err);
+    }
+  });
 });
-
+</script>
+<script>
+document.getElementById("testRedirectBtn").addEventListener("click", () => {
+  console.log("Testing manual redirect...");
+  window.location.replace("login-page.html");
+});
 </script>
 
 

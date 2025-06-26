@@ -17,9 +17,12 @@ function redirectToLogin(event) {
 function getRedirectUrl() {
   const params = new URLSearchParams(window.location.search);
   const redirect = params.get('redirect');
-  console.log('Redirect from param:', redirect); // ดูว่าค่าถูกดึงมาไหม
-  return redirect || '/index.html';
+  console.log('Redirect from param:', redirect);
+  
+  // ถ้าไม่มี redirect เลย ให้ return null ไปเลย
+  return redirect || null;
 }
+
 
 
 function loginSubmit() {
@@ -47,6 +50,7 @@ function loginSubmit() {
   .then(data => {
     alert(data.message);
     if (data.message === 'Login successfully.') {
+      localStorage.setItem('authToken', 'yes');
       localStorage.setItem('role', data.user.role);
       localStorage.setItem('email', data.user.email);
       // อ่านค่า redirect จาก URL เพื่อไปหน้าเดิมที่มาก่อนล็อกอิน
@@ -58,6 +62,45 @@ function loginSubmit() {
   })
   .catch(error => {
     console.error('Login error:', error);
-    alert('เกิดข้อผิดพลาดในการเข้าสู่ระบบ');
+    alert('login ผิดพลาดโปรดตรวจสอบใหม่');
   });
+
+
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("authToken");
+  const redirectUrl = getRedirectUrl();
+  const isLoginPage = window.location.pathname.includes("login-page.html");
+
+  // ✅ เงื่อนไขใหม่: redirect ได้เฉพาะถ้ามี redirect param
+  if (token && !isLoginPage && redirectUrl) {
+    console.log("✅ Already logged in, redirecting to:", redirectUrl);
+    if (redirectUrl !== window.location.pathname) {
+      window.location.href = redirectUrl;
+    }
+  }
+});
+
+
+
+
+
+
+window.addEventListener("pageshow", function (event) {
+  const token = localStorage.getItem('authToken');
+
+  if (!token && (event.persisted || window.performance?.navigation.type === 2)) {
+    console.log('No token and back navigation: redirecting to login');
+    window.location.href = "./login-page.html"; // หรือเปลี่ยน path ตามที่ถูกต้อง
+  }
+});
+
+
+function performLogout() {
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('email');
+  localStorage.removeItem('role');
+  window.location.replace("./SignLogin/login-page.html");
+}
+
