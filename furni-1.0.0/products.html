@@ -292,36 +292,27 @@
           const thumbnailsContainer = document.getElementById("thumbnailsContainer");
 
 
+
         if (product.image_url) {
 
-          if (product.image_url) {
+          const fullUrl = `http://localhost:3000/${product.image_url}`;
+          mainImage.src = fullUrl;
 
-            const fullUrl = `http://localhost:3000/${product.image_url}`;
+          thumbnailsContainer.innerHTML = ''; // ล้าง thumbnail เดิม
+
+
+          const img = document.createElement("img");
+          img.src = fullUrl;
+          img.alt = product.name;
+          img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
+          img.addEventListener("click", () => {
             mainImage.src = fullUrl;
-
-            thumbnailsContainer.innerHTML = ''; // ล้าง thumbnail เดิม
-
-
-            const img = document.createElement("img");
-            img.src = fullUrl;
-            img.alt = product.name;
-            img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
-            img.addEventListener("click", () => {
-              mainImage.src = fullUrl;
-            });
-            thumbnailsContainer.appendChild(img);
-          }
-
-
-            const img = document.createElement("img");
-            img.src = fullUrl;
-            img.alt = product.name;
-            img.className = "w-20 h-20 object-cover cursor-pointer border-2 border-transparent hover:border-gray-500 rounded";
-            img.addEventListener("click", () => {
-              mainImage.src = fullUrl;
-            });
-            thumbnailsContainer.appendChild(img);
+          });
+          thumbnailsContainer.appendChild(img);
         }
+
+
+          
 
 
 
@@ -406,7 +397,6 @@
 
   </script>
 
-<script src="/SignLogin/login-page.js"></script>
 
 </body>
 
