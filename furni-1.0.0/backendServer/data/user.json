@@ -358,5 +358,29 @@
     "address": "---",
     "password": "1000",
     "role": "user"
+  },
+  {
+    "firstName": "r",
+    "lastName": "r",
+    "email": "r@gmail.com",
+    "address": "---",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "b",
+    "lastName": "b",
+    "email": "bb@gmail.com",
+    "address": "11/12 English",
+    "password": "1000",
+    "role": "user"
+  },
+  {
+    "firstName": "u",
+    "lastName": "u",
+    "email": "u@gmail.com",
+    "address": "---",
+    "password": "1000",
+    "role": "user"
   }
 ]

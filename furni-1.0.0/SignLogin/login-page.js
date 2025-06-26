@@ -60,7 +60,7 @@ function loginSubmit() {
     if (redirectUrl) {
       window.location.href = redirectUrl;
     } else {
-      window.location.href = "/index.html"; // หรือหน้า default ที่คุณต้องการ
+      window.location.href = "/index.html"; // หรือหน้าอื่นที่ต้องการ
     }
     }
   })
@@ -68,8 +68,6 @@ function loginSubmit() {
     console.error('Login error:', error);
     alert('login ผิดพลาดโปรดตรวจสอบใหม่');
   });
-
-
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -86,11 +84,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
-
-
-
-
 window.addEventListener("pageshow", function (event) {
   const token = localStorage.getItem('authToken');
 
@@ -99,7 +92,6 @@ window.addEventListener("pageshow", function (event) {
     window.location.href = "./login-page.html"; // หรือเปลี่ยน path ตามที่ถูกต้อง
   }
 });
-
 
 function performLogout() {
   localStorage.removeItem('authToken');
