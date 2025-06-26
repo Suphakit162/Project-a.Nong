@@ -51,7 +51,8 @@
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-					<li><a class="nav-link" href="#" onclick="redirectToLogin(event)"><img src="images/user.svg"></a></li>
+					<li><a class="nav-link" href="#" onclick="redirectToLogin(event)"><img src="images/user.svg"></a>
+					</li>
 					<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 					<li><a class="nav-link" href="admin.html"><img src="images/ประเเจ.png" width="30px"></a></li>
 				</ul>
@@ -78,7 +79,7 @@
 	</div>
 	<!-- End Hero Section -->
 
-	
+
 
 	<div class="untree_co-section">
 		<div class="container">
@@ -385,7 +386,8 @@
 								</div>
 
 								<div class="form-group">
-									<button class="btn btn-black btn-lg py-3 btn-block" onclick="placeOrder()">Place Order</button>
+									<button class="btn btn-black btn-lg py-3 btn-block" onclick="placeOrder()">Place
+										Order</button>
 
 
 								</div>
@@ -399,7 +401,11 @@
 			<!-- </form> -->
 		</div>
 	</div>
-<button onclick="logout()" class="btn btn-danger">Logout</button>
+
+
+	<button onclick="logout()" class="btn btn-danger">Logout</button>
+
+
 	<!-- Start Footer Section -->
 	<footer class="footer-section">
 		<div class="container relative">
@@ -555,47 +561,49 @@
 		});
 
 		function placeOrder() {
+			const payload = {
+				fullname: document.getElementById('c_fname').value + ' ' + document.getElementById('c_lname').value,
+				email: document.getElementById('c_email_address').value,
+				address: document.getElementById('c_address').value,
+				items: window.cartItems || []
+			};
+			console.log("Payload to send:", payload);
+
 			fetch('http://localhost:3000/api/orders', {
 				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					fullname: document.getElementById('c_fname').value + ' ' + document.getElementById('c_lname').value,
-					email: document.getElementById('c_email_address').value,
-					address: document.getElementById('c_address').value,
-					items: window.cartItems || [] 
-				})
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(payload)
 			})
 				.then(res => res.json())
 				.then(data => {
-					if (data.success) {
-						// ล้างตะกร้าหลังสั่งซื้อ
-						location.href = "thankyou.html";
-					} else {
-						alert("สั่งซื้อไม่สำเร็จ");
-					}
+						alert("คำสั่งซื้อสำเร็จ ✅");
+						location.href="thankyou.html";
+				})
+				.catch(err => {
+					console.error('Error placing order:', err);
+					alert("เกิดข้อผิดพลาดในการสั่งซื้อ ลองใหม่อีกครั้ง");
 				});
 		}
+
 		//logout
 		function logout() {
-    if (!window.cartItems || window.cartItems.length === 0) {
-      performLogout();
-    } else {
-      const confirmLogout = confirm("คุณยังมีสินค้าที่ยังไม่ได้สั่งซื้อ ต้องการออกจากระบบจริงหรือไม่?");
-      if (confirmLogout) {
-        performLogout();
-      }
-    }
-  }
+			if (!window.cartItems || window.cartItems.length === 0) {
+				performLogout();
+			} else {
+				const confirmLogout = confirm("คุณยังมีสินค้าที่ยังไม่ได้สั่งซื้อ ต้องการออกจากระบบจริงหรือไม่?");
+				if (confirmLogout) {
+					performLogout();
+				}
+			}
+		}
 
-  function performLogout() {
-    localStorage.removeItem('authToken');
-    window.location.href = "./SignLogin/login-page.html";
-  }
+		function performLogout() {
+			localStorage.removeItem('authToken');
+			window.location.href = "./SignLogin/login-page.html";
+		}
 	</script>
 
-	<script src="/SignLogin/login-page.js"></script>
+
 
 </body>
 

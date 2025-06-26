@@ -20,6 +20,14 @@ router.post('/', (req, res) => {
   );
 });
 
+router.post('/orders', (req, res) => {
+  const { fullname, email, address, items } = req.body;
+
+  if (!fullname || !email || !address || !items || !items.length) {
+    return res.status(400).json({ success: false, message: 'ข้อมูลไม่ครบถ้วน' });
+  }
+})
+
 router.get('/', (req, res) => {
   const query = `
     SELECT cart_items.id, products.name, products.price, products.image_url, cart_items.quantity
