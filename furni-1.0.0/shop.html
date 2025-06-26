@@ -55,8 +55,10 @@
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-					<li><a class="nav-link" href="SignLogin/login-page.html" onclick="redirectToLogin(event)"><img src="images/user.svg" alt="Login"></a></li>
+					<li><a class="nav-link" href="SignLogin/login-page.html" onclick="redirectToLogin(event)"><img
+								src="images/user.svg" alt="Login"></a></li>
 					<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+					<li><a class="nav-link" href="admin.html"><img src="images/ประเเจ.png" width="30px"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -71,18 +73,19 @@
 				<div class="col-lg-5">
 					<div class="intro-excerpt">
 						<h1>Shop</h1>
-						<p>Discover modern furniture and décor crafted for comfort, quality, and style—everything you need to create a space you love.</p>
+						<p>Discover modern furniture and décor crafted for comfort, quality, and style—everything you
+							need to create a space you love.</p>
 					</div>
 				</div>
-					<div class="col-lg-7">
-							<div class="hero-img-wrap">
-								<img src="images/couch.png" class="img-fluid">
-							</div>
-						</div>
-
+				<div class="col-lg-7">
+					<div class="hero-img-wrap">
+						<img src="images/couch.png" class="img-fluid">
+					</div>
 				</div>
+
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- End Hero Section -->
 
@@ -102,7 +105,11 @@
 					</button>
 
 					<!-- Search -->
-					<input type="text" id="searchInput" class="border p-2 rounded w-48" placeholder="ค้นหาสินค้า...">
+					
+						<input type="text" id="searchInput" class="border-black p-2 rounded w-48"
+							placeholder="ค้นหาสินค้า...">
+						<button id="searchButton" class="bg-black text-white px-4 py-2 rounded">ค้นหา</button>
+					
 
 
 					<style>
@@ -671,8 +678,9 @@
 			<div class="row g-5 mb-5">
 				<div class="col-lg-4">
 					<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
-					<p class="mb-4">Discover curated interiors that blend functionality with sophisticated design. 
-						From concept to creation, we transform spaces into works of art that reflect your personality.</p>
+					<p class="mb-4">Discover curated interiors that blend functionality with sophisticated design.
+						From concept to creation, we transform spaces into works of art that reflect your personality.
+					</p>
 
 					<ul class="list-unstyled custom-social">
 						<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
@@ -992,12 +1000,24 @@
 
 		}
 
-		let debounceTimer;
-		document.getElementById('searchInput').addEventListener('input', () => {
-			clearTimeout(debounceTimer);
-			debounceTimer = setTimeout(() => {
+		// let debounceTimer;
+		// document.getElementById('searchInput').addEventListener('input', () => {
+		// 	clearTimeout(debounceTimer);
+		// 	debounceTimer = setTimeout(() => {
+		// 		searchProducts();
+		// 	}, 300);
+		// });
+
+		// ✅ กด Enter เพื่อค้นหา
+		document.getElementById('searchInput').addEventListener('keydown', (e) => {
+			if (e.key === 'Enter') {
 				searchProducts();
-			}, 300);
+			}
+		});
+
+		// ✅ กดปุ่มเพื่อค้นหา
+		document.getElementById('searchButton').addEventListener('click', () => {
+			searchProducts();
 		});
 
 
