@@ -16,6 +16,8 @@ async function loadProducts() {
   }
 
   const table = document.getElementById('product-table');
+
+  3
   table.innerHTML = '';
   products.forEach(p => {
     const row = `
@@ -54,14 +56,6 @@ async function loadProducts() {
   });
 });
 }
-
-
-
-
-// // ฟังก์ชันหนี quote เพื่อป้องกัน bug เวลาแก้ไข
-// function escapeQuotes(str) {
-//   return str.replace(/'/g, "\\'");
-// }
 
 // กรอกฟอร์มเพื่อแก้ไขสินค้า
 function editProduct(id, name, description, price, image_url, category) {

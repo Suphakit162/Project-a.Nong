@@ -793,17 +793,37 @@
 			});
 
 		function addToCart(productId) {
-			fetch('http://localhost:3000/api/cart', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ product_id: productId })
-			})
-				.then(res => res.json())
-				.then(data => {
-					if (data.success) alert("เพิ่มสินค้าในตะกร้าสำเร็จ");
-					else alert("เกิดข้อผิดพลาดขณะเพิ่มสินค้า");
-				});
-		}
+  const token = localStorage.getItem("authToken");
+  if (!token) {
+    alert("กรุณาเข้าสู่ระบบก่อนเพิ่มสินค้าลงตะกร้า");
+    window.location.href = `SignLogin/login-page.html?redirect=${encodeURIComponent(window.location.pathname)}`;
+    return;
+  }
+
+  fetch('http://localhost:3000/api/cart', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`  // ส่ง token ด้วย
+    },
+    body: JSON.stringify({ product_id: productId })
+  })
+  .then(res => {
+    if (res.status === 401) {
+      alert("กรุณาเข้าสู่ระบบก่อนเพิ่มสินค้าลงตะกร้า");
+      window.location.href = `SignLogin/login-page.html?redirect=${encodeURIComponent(window.location.pathname)}`;
+      return;
+    }
+    return res.json();
+  })
+  .then(data => {
+    if (data && data.success) alert("เพิ่มสินค้าในตะกร้าสำเร็จ");
+    else alert("เกิดข้อผิดพลาดขณะเพิ่มสินค้า");
+  });
+}
+
+
+
 
 		function loadProducts(category = '') {
 			const url = category

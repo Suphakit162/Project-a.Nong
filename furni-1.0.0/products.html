@@ -369,25 +369,48 @@
 
           // ✅ ปุ่มเพิ่มลงตะกร้า
           document.getElementById("addToCartBtn").addEventListener("click", () => {
-            fetch('http://localhost:3000/api/cart', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                product_id: product.id,
-                quantity: quantity
-              })
-            })
-              .then(res => res.json())
-              .then(data => {
-                window.location.href = 'shop.html';
-                alert("เพิ่มสินค้าลงตะกร้าแล้ว!");
-                
-              })
-              .catch(err => {
-                console.error("Error:", err);
-                alert("เกิดข้อผิดพลาดในการเพิ่มสินค้า");
-              });
-          });
+  const token = localStorage.getItem("authToken"); // ใช้ authToken แทน user
+
+  if (!token) {
+    alert("กรุณาเข้าสู่ระบบก่อนเพิ่มสินค้าลงตะกร้า");
+    // ส่ง redirect กลับหน้าปัจจุบันเพื่อหลัง login กลับมาหน้านี้
+    window.location.href = `SignLogin/login-page.html?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+    return;
+  }
+
+  fetch('http://localhost:3000/api/cart', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // ส่ง token ด้วย
+    },
+    body: JSON.stringify({
+      product_id: product.id,
+      quantity: quantity
+    })
+  })
+  .then(res => {
+    if (res.status === 401) {
+      alert("กรุณาเข้าสู่ระบบก่อนเพิ่มสินค้าลงตะกร้า");
+      window.location.href = `SignLogin/login-page.html?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+      return;
+    }
+    return res.json();
+  })
+  .then(data => {
+    if (data && data.success) {
+      alert("เพิ่มสินค้าลงตะกร้าแล้ว!");
+      window.location.href = 'shop.html';
+    } else {
+      alert("เกิดข้อผิดพลาดในการเพิ่มสินค้า");
+    }
+  })
+  .catch(err => {
+    console.error("Error:", err);
+    alert("เกิดข้อผิดพลาดในการเพิ่มสินค้า");
+  });
+});
+
         })
         .catch(err => {
           console.error(err);

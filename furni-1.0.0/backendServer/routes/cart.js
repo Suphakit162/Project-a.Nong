@@ -3,7 +3,23 @@ const router = express.Router();
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/ecommerce.db');
 
-router.post('/', (req, res) => {
+// ✅ middleware เช็ค login
+function requireLogin(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ success: false, message: "กรุณาเข้าสู่ระบบก่อน" });
+  }
+  const token = authHeader.split(' ')[1];
+  if (token !== "yes") {
+    return res.status(401).json({ success: false, message: "Token ไม่ถูกต้อง" });
+  }
+  next();
+}
+
+
+
+// ✅ เพิ่มสินค้าในตะกร้า (ต้อง login)
+router.post('/', requireLogin, (req, res) => {
   const { product_id, quantity } = req.body;
   if (!product_id) return res.status(400).json({ error: "Missing product_id" });
 

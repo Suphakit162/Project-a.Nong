@@ -598,9 +598,12 @@
 		}
 
 		function performLogout() {
-			localStorage.removeItem('authToken');
-			window.location.href = "./SignLogin/login-page.html";
-		}
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('email');
+  localStorage.removeItem('role');
+  window.location.href = "./SignLogin/login-page.html";
+}
+
 	</script>
 
 

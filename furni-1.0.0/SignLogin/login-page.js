@@ -50,18 +50,18 @@ function loginSubmit() {
   .then(data => {
     alert(data.message);
     if (data.message === 'Login successfully.') {
-      localStorage.setItem('authToken', 'yes');
+      // ✅ ใช้ token ที่ backend ส่งมา
+      localStorage.setItem('authToken', data.token);  
       localStorage.setItem('role', data.user.role);
       localStorage.setItem('email', data.user.email);
-      // อ่านค่า redirect จาก URL เพื่อไปหน้าเดิมที่มาก่อนล็อกอิน
+
       const redirectUrl = getRedirectUrl();
       console.log('Redirecting to:', redirectUrl);
-      // Redirect กลับไปหน้าเดิม
-    if (redirectUrl) {
-      window.location.href = redirectUrl;
-    } else {
-      window.location.href = "/index.html"; // หรือหน้าอื่นที่ต้องการ
-    }
+      if (redirectUrl) {
+        window.location.href = redirectUrl;
+      } else {
+        window.location.href = "/index.html";
+      }
     }
   })
   .catch(error => {
@@ -69,6 +69,7 @@ function loginSubmit() {
     alert('login ผิดพลาดโปรดตรวจสอบใหม่');
   });
 }
+
 
 window.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("authToken");
